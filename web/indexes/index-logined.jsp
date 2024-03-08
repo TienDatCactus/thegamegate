@@ -69,12 +69,12 @@
                         <div class="col product-section">
                             <article class="product-card">
                                 <div class="product-card__img-wrap">
-                                    <a href="${pageContext.request.contextPath}/ProductControl">
+                                    <a href="${pageContext.request.contextPath}/ProductControl?id=${pd.productId}">
                                         <img src="${pageContext.request.contextPath}/${pd.imagePath}" alt="" class="product-card__thumb" />
                                     </a>
                                 </div>
                                 <h3 class="product-card__title">
-                                    <a href="${pageContext.request.contextPath}/ProductControl">${pd.name}</a>
+                                    <a href="${pageContext.request.contextPath}/ProductControl?id=${pd.productId}">${pd.name}</a>
                                 </h3>
                                 <c:forEach items="${gameList}" var="gm" >
                                     <c:if test="${pd.productId == gm.productId}">
@@ -184,12 +184,12 @@
                         <div class="col product-section">
                             <article class="product-card">
                                 <div class="product-card__img-wrap">
-                                    <a href="${pageContext.request.contextPath}/ProductControl">
+                                    <a href="${pageContext.request.contextPath}/ProductControl?id=${pd.productId}">
                                         <img src="${pageContext.request.contextPath}/${pd.imagePath}" alt="" class="product-card__thumb" />
                                     </a>
                                 </div>
                                 <h3 class="product-card__title">
-                                    <a href="${pageContext.request.contextPath}/ProductControl">${pd.name}</a>
+                                    <a href="${pageContext.request.contextPath}/ProductControl?id=${pd.productId}">${pd.name}</a>
                                 </h3>
                                 <c:forEach items="${gameList}" var="gm" >
                                     <c:if test="${pd.productId == gm.productId}">

@@ -60,8 +60,6 @@ public class LoginControl extends HttpServlet {
             String password = request.getParameter("password");
             LoginDAO login = new LoginDAO();
             UsersAccount usa = login.checkLogin(email, password);
-            UserDAO checkUser = new UserDAO();
-           
             if (usa != null) {
                 HttpSession sess = request.getSession();
                 sess.setAttribute("user", usa);

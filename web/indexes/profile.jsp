@@ -11,7 +11,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/assets/favicon/favicon-16x16.png" />
         <link rel="manifest" href="${pageContext.request.contextPath}/assets/favicon/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff" />   
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,19 +35,14 @@
         </script>
 
         <!-- MAIN -->
-        <c:set var="user" value="${sessionScope.user}" />
         <main class="profile">
+            <c:if test="${sessionScope.user == null}">
+                <p>You are not logged in.</p>
+            </c:if>
+            <c:if test="${sessionScope.user != null}">
+                <p>You are logged in.</p>
+            </c:if>
             <div class="container">
-                <!-- Search bar -->
-                <div class="profile-container">
-                    <div class="search-bar d-none d-md-flex">
-                        <input type="text" name="" id="" placeholder="Search for item" class="search-bar__input" />
-                        <button class="search-bar__submit">
-                            <img src="${pageContext.request.contextPath}/assets/icons/search.svg" alt="" class="search-bar__icon icon" />
-                        </button>
-                    </div>
-                </div>
-
                 <!-- Profile content -->
                 <div class="profile-container">
                     <div class="row gy-md-3">
@@ -55,14 +50,15 @@
                             <aside class="profile__sidebar">
                                 <!-- User -->
                                 <div class="profile-user">
-                                    <img src="${pageContext.request.contextPath}/assets/assets/unrelated pics/393079318_380409527695049_9175388240863914926_n.jpg" alt="" class="profile-user__avatar" />
-                                    <h1 class="profile-user__name">${user.firstName} ${user.lastName}</h1>
-                                    <p class="profile-user__desc">@user${user.userId}</p>
+                                    <img src="${pageContext.request.contextPath}/assets/assets/unrelated pics/1.png" alt="" class="profile-user__avatar" />
+                                    <c:forEach var="${userInfo}" var="ui">
+                                        <h1 class="profile-user__name">${ui.firstName} ${ui.lastName}</h1>
+                                        <p class="profile-user__desc">@user${ui.userId}</p>
+                                    </c:forEach>
                                 </div>
-
                                 <!-- Menu 1 -->
                                 <div class="profile-menu">
-                                    <h3 class="profile-menu__title">Profile</h3>
+                                    <h3 class="profile-menu__title">Profile </h3>
                                     <ul class="profile-menu__list">
                                         <li>
                                             <a href="${pageContext.request.contextPath}/edit-personal-info.jsp" class="profile-menu__link">
@@ -72,7 +68,6 @@
                                                 Edit personal Profile
                                             </a>
                                         </li>
-
                                     </ul>
                                 </div>
 
@@ -132,7 +127,7 @@
                                         <p class="cart-info__desc profile__desc">Payment methods</p>
 
                                         <div class="row gy-md-2 row-cols-3 row-cols-xl-2 row-cols-lg-1">
-                                           
+
                                             <!-- Payment card 1 -->
                                             <div class="col">
                                                 <article class="payment-card" style="--bg-color: #1e2e69">
@@ -142,21 +137,19 @@
                                                         <span class="payment-card__type">NiggaCard</span>
                                                     </div>
                                                     <c:forEach items="${userPayment}" var="us">
-                                                        <c:if test="${up.userId == user.userId}">
-                                                            <div class="payment-card__number">${up.cardNum}</div>
-                                                        </c:if>
+                                                        <div class="payment-card__number">${up.cardNum}</div>
                                                     </c:forEach>
                                                     <div class="payment-card__bottom">
                                                         <div>
                                                             <p class="payment-card__label">authorized</p>
-                                                            <p class="payment-card__value" >${user.firstName} ${user.lastName}</p>
+                                                            <c:forEach var="${userInfo}" var="ui">
+                                                                <p class="payment-card__value" >${ui.firstName} ${ui.lastName}</p>
+                                                            </c:forEach>
                                                         </div>
                                                         <div class="payment-card__expired">
                                                             <p class="payment-card__label">Expired</p>
-                                                            <c:forEach items="${userPayment}" var="us">
-                                                                <c:if test="${up.userId == user.userId}">
-                                                                    <p class="payment-card__value">${up.expire}</p>
-                                                                </c:if>
+                                                            <c:forEach items="${userPayment}" var="up">
+                                                                <p class="payment-card__value">${up.expire}</p>
                                                             </c:forEach>
                                                         </div>
                                                         <div class="payment-card__circle"></div>
@@ -188,11 +181,7 @@
                                                         </div>
                                                         <div>
                                                             <h3 class="account-info__title">Email Address</h3>
-                                                            <c:forEach items="${userAccount}" var="usa">
-                                                                <c:if test="${user.userId == usa.userId}">
-                                                                    <p class="account-info__desc">${usa.email}</p>
-                                                                </c:if>
-                                                            </c:forEach>
+                                                            <p class="account-info__desc" name="email">${user.email}</p>
                                                         </div>
                                                     </article>
                                                 </div>
@@ -206,8 +195,10 @@
                                                             <img src="${pageContext.request.contextPath}/assets/icons/calling.svg" alt="" class="icon" />
                                                         </div>
                                                         <div>
-                                                            <h3 class="account-info__title">Số điện thoại</h3>
-                                                            <p class="account-info__desc">${user.telephone}</p>
+                                                            <h3 class="account-info__title">Telephone</h3>
+                                                            <c:forEach items="${userInfo}" var="ui">
+                                                                <p class="account-info__desc">${ui.telephone}</p>
+                                                            </c:forEach>
                                                         </div>
                                                     </article>
                                                 </div>
@@ -221,16 +212,16 @@
                                                             <img src="${pageContext.request.contextPath}/assets/icons/location.svg" alt="" class="icon" />
                                                         </div>
                                                         <div>
-                                                            <h3 class="account-info__title">Địa chỉ</h3>
-                                                            <p class="account-info__desc">Gầm cầu </p>
+                                                            <h3 class="account-info__title">Address</h3>
+                                                            <c:forEach items="${userInfo}" var="ui">
+                                                                <p class="account-info__desc">${ui.address}</p>
+                                                            </c:forEach>
                                                         </div>
                                                     </article>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
