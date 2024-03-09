@@ -55,9 +55,9 @@ public class EditProfileControl extends HttpServlet {
         UsersAccount usa = new UsersAccount(id, email, password);
 
         Object update = request.getParameter("update");
-        boolean updateCheck = (update != null);
+        boolean ok = (update != null);
 
-        if (updateCheck) {
+        if (ok) {
             dao.userUpdate(user);
             dao.userAccountUpdate(usa);
             response.sendRedirect(request.getContextPath() + "/ProfileControl");
