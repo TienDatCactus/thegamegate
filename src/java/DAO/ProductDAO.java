@@ -104,9 +104,9 @@ public class ProductDAO {
                 ps.setInt(1, id);
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
-                        int catetId = rs.getInt(1);
+                        int subcateId = rs.getInt(1);
                         String name = rs.getString(2);
-                        return new Category(catetId, name);
+                        return new Category(subcateId, name);
                     }
                 }
             }
