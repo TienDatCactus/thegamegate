@@ -36,7 +36,6 @@
             </c:when>
             <c:otherwise >
                 <div class="top-act">
-
                     <div class="top-act__group d-md-none">
                         <div class="top-act__btn-wrap">
                             <button class="top-act__btn">

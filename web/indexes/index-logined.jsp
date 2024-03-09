@@ -53,12 +53,6 @@
                     </div>
                 </div>
             </div>
-            <c:if test="${empty sessionScope.user}">
-                <p>You are not logged in.</p>
-            </c:if>
-            <c:if test="${not empty sessionScope.user}">
-                <p>You are logged in.</p>
-            </c:if>
             <!-- Browse Categories -->
             <section class="home__container">
                 <div class="home__row">

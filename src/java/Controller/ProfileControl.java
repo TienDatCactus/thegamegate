@@ -9,44 +9,39 @@ import Models.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
-/**
- *
- * @author Tiến_Đạt
- */
 public class ProfileControl extends HttpServlet {
-
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String email = request.getParameter("email");
-        UserDAO dao = new UserDAO();
-        List<Users> user = dao.getUserListByEmail(email);
-        List<UserPayments> payment = dao.getUserPayments(email);
-
-        request.setAttribute("userInfo", user);
-        request.setAttribute("userPayment", payment);
-        request.getRequestDispatcher("indexes/profile.jsp").forward(request, response);
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("/indexes/profile.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+        HttpSession sess = request.getSession();
+        UsersAccount ua = (UsersAccount)sess.getAttribute("user");
+        if (ua == null) {
+            response.sendRedirect(request.getContextPath() + "/LoginControl");
+            return;
+        }
+        int id = ua.getUserId();
+        UserDAO dao = new UserDAO();
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
+        Users user = dao.getUserById(id);
+        UserPayments payment = dao.getUserPaymentsById(id);
+
+        request.setAttribute("userInfo", user);
+        request.setAttribute("userPayment", payment);
+        request.getRequestDispatcher("indexes/profile.jsp").forward(request, response);
     }
 
 }

@@ -26,7 +26,10 @@ public class LoginDAO {
             ps.setString(2, password);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    ua = new UsersAccount(rs.getString("Email"), rs.getString("Password"));
+                    int id = rs.getInt(1);
+                    String mail = rs.getString(2);
+                    String pass = rs.getString(3);
+                    ua = new UsersAccount(id, mail, pass);
                     return ua;
                 }
             }

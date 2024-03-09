@@ -14,10 +14,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 
-/**
- *
- * @author Tiến_Đạt
- */
 public class HomeControl extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
