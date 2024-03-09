@@ -113,19 +113,14 @@ public class UserDAO {
             try (PreparedStatement ps = con.prepareStatement(query)) {
                 ps.setInt(1, userId);
                 try (ResultSet rs = ps.executeQuery()) {
-                    if (rs.next()) {
+                    while (rs.next()) {
                         int id = rs.getInt(1);
                         String firstName = rs.getString(2);
                         String lastName = rs.getString(3);
                         String telephone = rs.getString(4);
                         String address = rs.getString(5);
-                        Users user = new Users(id, firstName, lastName, telephone, address);
-                        return user;
-                    } else {
-                        return null;
+                        return new Users(id, firstName, lastName, telephone, address);
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
         } catch (Exception e) {
