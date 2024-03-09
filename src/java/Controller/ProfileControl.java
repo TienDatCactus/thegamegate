@@ -21,14 +21,8 @@ public class ProfileControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/indexes/profile.jsp").forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
         HttpSession sess = request.getSession();
-        UsersAccount ua = (UsersAccount)sess.getAttribute("user");
+        UsersAccount ua = (UsersAccount) sess.getAttribute("user");
         if (ua == null) {
             response.sendRedirect(request.getContextPath() + "/LoginControl");
             return;
@@ -39,9 +33,15 @@ public class ProfileControl extends HttpServlet {
         Users user = dao.getUserById(id);
         UserPayments payment = dao.getUserPaymentsById(id);
 
-        request.setAttribute("userInfo", user);
-        request.setAttribute("userPayment", payment);
+        request.setAttribute("ui", user);
+        request.setAttribute("up", payment);
         request.getRequestDispatcher("indexes/profile.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
     }
 
 }
