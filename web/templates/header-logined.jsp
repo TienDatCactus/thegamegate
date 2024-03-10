@@ -124,8 +124,8 @@
                                 <div class="user-menu__top">
                                     <img src="${pageContext.request.contextPath}/assets/assets/unrelated pics/1.png" alt="" class="user-menu__avatar" />
                                     <div>
-                                        <p class="user-menu__name">Tien Dat </p>
-                                        <p>@dat09</p>
+                                        <p class="user-menu__name">${ui.firstName} ${ui.lastName}</p>
+                                        <p>@user${user.userId}</p>
                                     </div>
                                 </div>
 
@@ -140,7 +140,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/indexes/    edit-personal-info.jsp" class="user-menu__link">Edit personal info</a>
+                                        <a href="${pageContext.request.contextPath}/indexes/edit-personal-info.jsp" class="user-menu__link">Edit personal info</a>
                                     </li>
                                     <li class="user-menu__separate">
                                         <a href="${pageContext.request.contextPath}/LogOutControl" class="user-menu__link">Sign Out</a>

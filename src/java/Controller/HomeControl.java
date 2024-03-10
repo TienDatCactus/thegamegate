@@ -18,25 +18,21 @@ public class HomeControl extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        SubCategoryDAO subcateDao = new SubCategoryDAO();
-        List<Subcategory> subcateList = subcateDao.getallSubCategory();
+        ProductDAO dao = new ProductDAO();
+        
+        List<Subcategory> subcateList = dao.getallSubCategory();
         request.setAttribute("subcateList", subcateList);
 
-        CategoryDAO cateDao = new CategoryDAO();
-        List<Category> cateList = cateDao.getallCategory();
+        List<Category> cateList = dao.getallCategory();
         request.setAttribute("cateList", cateList);
 
-        GameDAO gameDao = new GameDAO();
-        List<Games> gameList = gameDao.getallGames();
+        List<Games> gameList = dao.getallGames();
         request.setAttribute("gameList", gameList);
 
-        LanguageDAO langDao = new LanguageDAO();
-        List<Language> langList = langDao.getallLanguage();
+        List<Language> langList = dao.getallLanguage();
         request.setAttribute("langList", langList);
 
-        ProductDAO productDao = new ProductDAO();
-        List<Product> productList = productDao.getallProduct();
+        List<Product> productList = dao.getallProduct();
         request.setAttribute("productList", productList);
 
         request.getRequestDispatcher("/indexes/index-logined.jsp").forward(request, response);

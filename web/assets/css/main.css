@@ -2995,6 +2995,7 @@ footer {
 
 .like-btn--liked .like-btn__icon {
     display: none;
+    cursor: pointer;
 }
 
 .like-btn__icon--liked {
@@ -4120,6 +4121,7 @@ footer {
     height: 100%;
     padding: 20px;
     border-radius: 10px;
+    width: 320px;
     color: #fff;
     background: var(--bg-color);
     overflow: hidden;
@@ -4210,6 +4212,7 @@ footer {
     justify-content: center;
     gap: 14px;
     height: 100%;
+    width: 320px;
     min-height: 170px;
     border-radius: 10px;
     border: 1px dashed #d2d1d6;

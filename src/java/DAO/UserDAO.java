@@ -16,25 +16,23 @@ import java.sql.ResultSet;
 
 public class UserDAO {
 
-    Connection con = null;
     PreparedStatement ps = null;
     UsersAccount ua = null;
     ResultSet rs = null;
     DBConnect db = new DBConnect();
+    Connection con = db.connection;
 
     public UserPayments getUserPaymentsById(int id) {
         String query = "SELECT * FROM UserPayments WHERE UserID = ? ";
-        try (Connection con = db.connection) {
-            try (PreparedStatement ps = con.prepareStatement(query)) {
-                ps.setInt(1, id);
-                try (ResultSet rs = ps.executeQuery()) {
-                    while (rs.next()) {
-                        int userId = rs.getInt(1);
-                        String cardNumber = rs.getString(2);
-                        Date expireDate = rs.getDate(3);
-                        return new UserPayments(userId, cardNumber, expireDate);
-                    }
-                }
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int userId = rs.getInt(1);
+                String cardNumber = rs.getString(2);
+                Date expireDate = rs.getDate(3);
+                return new UserPayments(userId, cardNumber, expireDate);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -43,85 +41,80 @@ public class UserDAO {
     }
 
     public List<UserPayments> getUserPayments() {
-        List<UserPayments> userPayments = new ArrayList<>();
+        List<UserPayments> list = new ArrayList<>();
         String query = "SELECT * FROM UserPayments";
-        try (Connection con = db.connection) {
-            try (PreparedStatement ps = con.prepareStatement(query)) {
-                try (ResultSet rs = ps.executeQuery()) {
-                    while (rs.next()) {
-                        int id = rs.getInt(1);
-                        String cardNumber = rs.getString(2);
-                        Date expireDate = rs.getDate(3);
-                        userPayments.add(new UserPayments(id, cardNumber, expireDate));
-                    }
-                }
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String cardNumber = rs.getString(2);
+                Date expireDate = rs.getDate(3);
+                list.add(new UserPayments(id, cardNumber, expireDate));
             }
+            return list;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return userPayments;
+        return null;
     }
 
-    public List<Users> getUserListByEmail(String email) {
-        List<Users> list = new ArrayList<>();
+    public Users getUserByEmail(String email) {
+        Users p = null;
         String query = "SELECT * FROM Users WHERE UserID = (SELECT UserID FROM UsersAccount WHERE Email = ? )";
-        try (Connection con = db.connection) {
-            try (PreparedStatement ps = con.prepareStatement(query)) {
-                ps.setString(1, email);
-                try (ResultSet rs = ps.executeQuery()) {
-                    while (rs.next()) {
-                        int id = rs.getInt(1);
-                        String firstName = rs.getString(2);
-                        String lastName = rs.getString(3);
-                        String telephone = rs.getString(4);
-                        String address = rs.getString(5);
-                        list.add(new Users(id, firstName, lastName, telephone, address));
-                    }
-                }
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+                String telephone = rs.getString(4);
+                String address = rs.getString(5);
+                p = new Users(id, firstName, lastName, telephone, address);
             }
+            return p;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return list;
+        return null;
     }
 
     public List<Users> getUserList() {
         List<Users> list = new ArrayList<>();
         String query = "SELECT * FROM Users";
-        try (Connection con = db.connection) {
-            try (PreparedStatement ps = con.prepareStatement(query)) {
-                try (ResultSet rs = ps.executeQuery()) {
-                    while (rs.next()) {
-                        int id = rs.getInt(1);
-                        String firstName = rs.getString(2);
-                        String lastName = rs.getString(3);
-                        String telephone = rs.getString(4);
-                        String address = rs.getString(5);
-                        list.add(new Users(id, firstName, lastName, telephone, address));
-                    }
-                }
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+                String telephone = rs.getString(4);
+                String address = rs.getString(5);
+                list.add(new Users(id, firstName, lastName, telephone, address));
             }
+            return list;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return list;
+        return null;
     }
 
     public Users getUserById(int userId) {
         String query = "SELECT * FROM Users WHERE UserID = ?";
-        try (Connection con = db.connection) {
-            try (PreparedStatement ps = con.prepareStatement(query)) {
-                ps.setInt(1, userId);
-                try (ResultSet rs = ps.executeQuery()) {
-                    while (rs.next()) {
-                        int id = rs.getInt(1);
-                        String firstName = rs.getString(2);
-                        String lastName = rs.getString(3);
-                        String telephone = rs.getString(4);
-                        String address = rs.getString(5);
-                        return new Users(id, firstName, lastName, telephone, address);
-                    }
-                }
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+                String telephone = rs.getString(4);
+                String address = rs.getString(5);
+                return new Users(id, firstName, lastName, telephone, address);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -131,30 +124,62 @@ public class UserDAO {
 
     public int getUserIdByEmail(String email) {
         String query = "SELECT UserID FROM UsersAccount WHERE Email = ?";
-        try (Connection con = db.connection) {
-            try (PreparedStatement ps = con.prepareStatement(query)) {
-                ps.setString(1, email);
-                try (ResultSet rs = ps.executeQuery()) {
-                    if (rs.next()) {
-                        int userId = rs.getInt(1);
-                        return userId;
-                    } else {
-                        return -1;
-                    }
-                }
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int userId = rs.getInt(1);
+                return userId;
+            } else {
+                return -1;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return -1;
     }
 
-    public static void main(String[] args) {
-        String email = "user451@example.com";
-        UserDAO dao = new UserDAO();
-        List<Users> us = dao.getUserListByEmail(email);
-        for (Users ua : us) {
-            System.out.println(ua);
+    public void userAccountUpdate(UsersAccount user) {
+        String query = " UPDATE [dbo].[UsersAccount]\n"
+                + "   SET [Email] = ?\n"
+                + "      ,[Password] = ?\n"
+                + " WHERE UserID = ?";
+        try{
+            PreparedStatement ps = con.prepareStatement(query);
+             ps.setString(1, user.getEmail());
+            ps.setString(2, user.getPassword());
+            ps.setInt(3, user.getUserId());
+            ps.execute();
+        }catch(Exception e){
+            e.printStackTrace();
         }
+    }
+
+    public void userUpdate(Users user) {
+        String query = "UPDATE [dbo].[Users]\n"
+                + "   SET [FirstName] = ?\n"
+                + "      ,[LastName] = ?\n"
+                + "      ,[Telephone] = ?\n"
+                + "      ,[Address] = ?\n"
+                + " WHERE UserID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(5, user.getUserId());
+            ps.setString(1, user.getFirstName());
+            ps.setString(2, user.getLastName());
+            ps.setString(3, user.getTelephone());
+            ps.setString(4, user.getAddress());
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        Users us = new Users(5, "Danny", "Brown", "00122231231", "21st Everdale");
+        UserDAO dao = new UserDAO();
+        dao.userUpdate(us);
     }
 }

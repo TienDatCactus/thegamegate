@@ -174,7 +174,7 @@
                 </div>
 
                 <div class="row row-cols-5 row-cols-lg-2 row-cols-sm-1 g-3">
-                    <c:forEach items="${productList}" var="pd">
+                    <c:forEach items="${productList}" var="pd" begin="1" end="10">
                         <div class="col product-section">
                             <article class="product-card">
                                 <div class="product-card__img-wrap">

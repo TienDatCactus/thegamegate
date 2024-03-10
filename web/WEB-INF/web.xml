@@ -28,6 +28,14 @@
         <servlet-name>ProductControl</servlet-name>
         <servlet-class>Controller.ProductControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditProfileControl</servlet-name>
+        <servlet-class>Controller.EditProfileControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditProductControl</servlet-name>
+        <servlet-class>Controller.EditProductControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern/>
@@ -63,5 +71,13 @@
     <servlet-mapping>
         <servlet-name>ProductControl</servlet-name>
         <url-pattern>/ProductControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProfileControl</servlet-name>
+        <url-pattern>/EditProfileControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProductControl</servlet-name>
+        <url-pattern>/EditProductControl</url-pattern>
     </servlet-mapping>
 </web-app>
