@@ -4923,6 +4923,8 @@ footer {
 
 .cart-info__list {
     margin-top: -30px;
+    overflow-y: auto;
+    height: 483px;
 }
 
 @media (max-width: 767.98px) {
@@ -5128,6 +5130,9 @@ footer {
 
 .cart-item__status {
     color: #67b044;
+    position: relative;
+    top: -8px;
+    font-size: smaller;
 }
 
 .cart-item__ctrl-wrap {
