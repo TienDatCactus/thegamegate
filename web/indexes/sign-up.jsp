@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib  uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %><!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>sign up­ | the game gate.</title>
+        <title>sign upÂ­ | the game gate.</title>
 
         <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="76x76" href="${pageContext.request.contextPath}/assets/favicon/apple-touch-icon.png" />
@@ -46,7 +47,7 @@
                     <a href="${pageContext.request.contextPath}/" class="logo">
                         <h1 class="logo__title">the game gate.</h1>
                     </a>
-                    <h1 class="auth__heading">Join us !­</h1>
+                    <h1 class="auth__heading">Join us !Â­</h1>
                     <p class="auth__desc">Into the game gate's great community.</p>
                     <span class="auth__desc">Create your own empire , become a leader to the new world's path</span>
                     <form action="${pageContext.request.contextPath}/SignUpControl" class="form auth__form" method="post">
@@ -88,7 +89,7 @@
                                 <img src="${pageContext.request.contextPath}/assets/icons/lock.svg" alt="" class="form__input-icon" />
                                 <img src="${pageContext.request.contextPath}/assets/icons/form-error.svg" alt="" class="form__input-icon-error" />
                             </div>
-                            
+
                             <p class="form__error">Invalid password format !</p>
                         </div>
                         <div class="form__group">

@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib  uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -385,7 +387,7 @@
                                                 </button>
                                             </div>
                                             <h3 class="product-card__title">
-                                                <a href="${pageContext.request.contextPath}/product-detail.html">Lavazza - Caffè Espresso Black Tin - Ground coffee</a>
+                                                <a href="${pageContext.request.contextPath}/product-detail.html">Lavazza - CaffÃ¨ Espresso Black Tin - Ground coffee</a>
                                             </h3>
                                             <p class="product-card__brand">Welikecoffee</p>
                                             <div class="product-card__row">
@@ -409,7 +411,7 @@
                                                 </button>
                                             </div>
                                             <h3 class="product-card__title">
-                                                <a href="${pageContext.request.contextPath}/product-detail.html">Qualità Oro Mountain Grown - Espresso Coffee Beans</a>
+                                                <a href="${pageContext.request.contextPath}/product-detail.html">QualitÃ  Oro Mountain Grown - Espresso Coffee Beans</a>
                                             </h3>
                                             <p class="product-card__brand">Lavazza</p>
                                             <div class="product-card__row">

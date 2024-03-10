@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib  uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,18 +54,18 @@
           <ul class="breadcrumbs checkout-page__breadcrumbs">
             <li>
               <a href="${pageContext.request.contextPath}/" class="breadcrumbs__link">
-                Trang chủ
+                Trang chá»§
                 <img src="${pageContext.request.contextPath}/assets/icons/arrow-right.svg" alt="" />
               </a>
             </li>
             <li>
               <a href="${pageContext.request.contextPath}/checkout.html" class="breadcrumbs__link">
-                Thanh toán
+                Thanh toÃ¡n
                 <img src="${pageContext.request.contextPath}/assets/icons/arrow-right.svg" alt="" />
               </a>
             </li>
             <li>
-              <a href="#!" class="breadcrumbs__link breadcrumbs__link--current">Giao hàng</a>
+              <a href="#!" class="breadcrumbs__link breadcrumbs__link--current">Giao hÃ ng</a>
             </li>
           </ul>
         </div>
@@ -73,22 +75,22 @@
           <div class="row gy-xl-3">
             <div class="col-8 col-xl-12">
               <div class="cart-info">
-                <h1 class="cart-info__heading">1. Thời gian vận chuyển ước tính !${shipping.time}</h1>
+                <h1 class="cart-info__heading">1. Thá»i gian váº­n chuyá»n Æ°á»c tÃ­nh !${shipping.time}</h1>
                 <div class="cart-info__separate"></div>
 
                 <!-- Checkout address -->
                 <div class="user-address">
                   <div class="user-address__top">
                     <div>
-                      <h2 class="user-address__title">Địa chỉ giao hàng</h2>
-                      <p class="user-address__desc">Chúng tôi sẽ giao hàng cho bạn ở where ?</p>
+                      <h2 class="user-address__title">Äá»a chá» giao hÃ ng</h2>
+                      <p class="user-address__desc">ChÃºng tÃ´i sáº½ giao hÃ ng cho báº¡n á» where ?</p>
                     </div>
                     <button
                       class="user-address__btn btn btn--primary btn--rounded btn--small js-toggle"
                       toggle-target="#add-new-address"
                     >
                       <img src="${pageContext.request.contextPath}/assets/icons/plus.svg" alt="" />
-                      Thêm địa chỉ mới
+                      ThÃªm Äá»a chá» má»i
                     </button>
                   </div>
                   <div class="user-address__list">
@@ -110,8 +112,8 @@
                           <h3 class="address-card__title">tien dat</h3>
                           <p class="address-card__desc">hihi.</p>
                           <ul class="address-card__list">
-                            <li class="address-card__list-item">Giao hàng</li>
-                            <li class="address-card__list-item">Vận chuyển từ kho hàng</li>
+                            <li class="address-card__list-item">Giao hÃ ng</li>
+                            <li class="address-card__list-item">Váº­n chuyá»n tá»« kho hÃ ng</li>
                           </ul>
                         </div>
                       </div>
@@ -119,7 +121,7 @@
                         <div class="address-card__ctrl">
                           <button class="cart-info__edit-btn js-toggle" toggle-target="#add-new-address">
                             <img class="icon" src="${pageContext.request.contextPath}/assets/icons/edit.svg" alt="" />
-                            Chỉnh sửa
+                            Chá»nh sá»­a
                           </button>
                         </div>
                       </div>
@@ -137,8 +139,8 @@
                           <h3 class="address-card__title">bao 123</h3>
                           <p class="address-card__desc">hhii</p>
                           <ul class="address-card__list">
-                            <li class="address-card__list-item">Giao hàng</li>
-                            <li class="address-card__list-item">Vận chuyển từ kho hàng</li>
+                            <li class="address-card__list-item">Giao hÃ ng</li>
+                            <li class="address-card__list-item">Váº­n chuyá»n tá»« kho hÃ ng</li>
                           </ul>
                         </div>
                       </div>
@@ -146,7 +148,7 @@
                         <div class="address-card__ctrl">
                           <button class="cart-info__edit-btn js-toggle" toggle-target="#add-new-address">
                             <img class="icon" src="${pageContext.request.contextPath}/assets/icons/edit.svg" alt="" />
-                            Chỉnh sửa
+                            Chá»nh sá»­a
                           </button>
                         </div>
                       </div>
@@ -156,7 +158,7 @@
 
                 <div class="cart-info__separate"></div>
 
-                <h2 class="cart-info__sub-heading">Chi tiết sản phẩm</h2>
+                <h2 class="cart-info__sub-heading">Chi tiáº¿t sáº£n pháº©m</h2>
                 <div class="cart-info__list">
                   <!-- Cart item 1 -->
                   <article class="cart-item">
@@ -189,7 +191,7 @@
                         <div class="cart-item__ctrl">
                           <button class="cart-item__ctrl-btn js-toggle" toggle-target="#delete-confirm">
                             <img src="${pageContext.request.contextPath}/assets/icons/trash.svg" alt="" />
-                            Xóa
+                            XÃ³a
                           </button>
                         </div>
                       </div>
@@ -204,22 +206,22 @@
                       <div class="cart-info__continue">
                         <a href="${pageContext.request.contextPath}/" class="cart-info__continue-link">
                           <img class="cart-info__continue-icon icon" src="${pageContext.request.contextPath}/assets/icons/arrow-down-2.svg" alt="" />
-                          Tiếp tục mua sắm
+                          Tiáº¿p tá»¥c mua sáº¯m
                         </a>
                       </div>
                     </div>
                     <div class="col-4 col-xxl-5">
                       <div class="cart-info__row">
-                        <span>Tổng ( tạm tính ):</span>
+                        <span>Tá»ng ( táº¡m tÃ­nh ):</span>
                         <span>$191.65</span>
                       </div>
                       <div class="cart-info__row">
-                        <span>Phí vận chuyển:</span>
+                        <span>PhÃ­ váº­n chuyá»n:</span>
                         <span>${carts.shippingFee}</span>
                       </div>
                       <div class="cart-info__separate"></div>
                       <div class="cart-info__row cart-info__row--bold">
-                        <span>Tổng:</span>
+                        <span>Tá»ng:</span>
                         <span>${procedure}</span>
                       </div>
                     </div>
@@ -230,24 +232,24 @@
             <div class="col-4 col-xl-12">
               <div class="cart-info">
                 <div class="cart-info__row">
-                  <span>Số lượng <span class="cart-info__sub-label">( sản phẩm )</span></span>
+                  <span>Sá» lÆ°á»£ng <span class="cart-info__sub-label">( sáº£n pháº©m )</span></span>
                   <span>3</span>
                 </div>
                 <div class="cart-info__row">
-                  <span>Tổng tiền <span class="cart-info__sub-label">( tạm tính )</span></span>
+                  <span>Tá»ng tiá»n <span class="cart-info__sub-label">( táº¡m tÃ­nh )</span></span>
                   <span>$191.65</span>
                 </div>
                 <div class="cart-info__row">
-                  <span>Phí vận chuyển</span>
+                  <span>PhÃ­ váº­n chuyá»n</span>
                   <span>${carts.shippingfee}</span>
                 </div>
                 <div class="cart-info__separate"></div>
                 <div class="cart-info__row">
-                  <span>Tổng</span>
+                  <span>Tá»ng</span>
                   <span>${procedure}</span>
                 </div>
                 <a href="${pageContext.request.contextPath}/payment.html" class="cart-info__next-btn btn btn--primary btn--rounded">
-                  Tiếp tục thanh toán
+                  Tiáº¿p tá»¥c thanh toÃ¡n
                 </a>
               </div>
               <div class="cart-info">
@@ -278,14 +280,14 @@
     <!-- Modal: confirm remove shopping cart item -->
     <div id="delete-confirm" class="modal modal--small hide">
       <div class="modal__content">
-        <p class="modal__text">Bạn có muốn xóa sản phẩm này khỏi giỏ hàng ?</p>
+        <p class="modal__text">Báº¡n cÃ³ muá»n xÃ³a sáº£n pháº©m nÃ y khá»i giá» hÃ ng ?</p>
         <div class="modal__bottom">
-          <button class="btn btn--small btn--outline modal__btn js-toggle" toggle-target="#delete-confirm">Hủy</button>
+          <button class="btn btn--small btn--outline modal__btn js-toggle" toggle-target="#delete-confirm">Há»§y</button>
           <button
             class="btn btn--small btn--danger btn--primary modal__btn btn--no-margin js-toggle"
             toggle-target="#delete-confirm"
           >
-            Xóa
+            XÃ³a
           </button>
         </div>
       </div>
@@ -296,27 +298,27 @@
     <div id="add-new-address" class="modal hide" style="--content-width: 650px">
       <div class="modal__content">
         <form action="" class="form">
-          <h2 class="modal__heading">Thay đổi địa chỉ giao hàng</h2>
+          <h2 class="modal__heading">Thay Äá»i Äá»a chá» giao hÃ ng</h2>
           <div class="modal__body">
             <div class="form__row">
               <div class="form__group">
-                <label for="name" class="form__label form__label--small">Họ và tên</label>
+                <label for="name" class="form__label form__label--small">Há» vÃ  tÃªn</label>
                 <div class="form__text-input form__text-input--small">
                   <input
                     type="text"
                     name="name"
                     id="name"
-                    placeholder="Nguyễn Thị Đạt"
+                    placeholder="Nguyá»n Thá» Äáº¡t"
                     class="form__input"
                     required
                     minlength="2"
                   />
                   <img src="${pageContext.request.contextPath}/assets/icons/form-error.svg" alt="" class="form__input-icon-error" />
                 </div>
-                <p class="form__error">Vui lòng nhập đầy đủ họ và tên</p>
+                <p class="form__error">Vui lÃ²ng nháº­p Äáº§y Äá»§ há» vÃ  tÃªn</p>
               </div>
               <div class="form__group">
-                <label for="phone" class="form__label form__label--small">Số điện thoại</label>
+                <label for="phone" class="form__label form__label--small">Sá» Äiá»n thoáº¡i</label>
                 <div class="form__text-input form__text-input--small">
                   <input
                     type="tel"
@@ -329,25 +331,25 @@
                   />
                   <img src="${pageContext.request.contextPath}/assets/icons/form-error.svg" alt="" class="form__input-icon-error" />
                 </div>
-                <p class="form__error">Vui lòng nhập số điện thoại hợp lệ</p>
+                <p class="form__error">Vui lÃ²ng nháº­p sá» Äiá»n thoáº¡i há»£p lá»</p>
               </div>
             </div>
             <div class="form__group">
-              <label for="address" class="form__label form__label--small">Địa chỉ</label>
+              <label for="address" class="form__label form__label--small">Äá»a chá»</label>
               <div class="form__text-area">
                 <textarea
                   name="address"
                   id="address"
-                  placeholder="Khu vực và thành phố"
+                  placeholder="Khu vá»±c vÃ  thÃ nh phá»"
                   class="form__text-area-input"
                   required
                 ></textarea>
                 <img src="${pageContext.request.contextPath}/assets/icons/form-error.svg" alt="" class="form__input-icon-error" />
               </div>
-              <p class="form__error">Vui lòng không bỏ trống địa chỉ</p>
+              <p class="form__error">Vui lÃ²ng khÃ´ng bá» trá»ng Äá»a chá»</p>
             </div>
             <div class="form__group">
-              <label for="city" class="form__label form__label--small">Thành phố / Quận / Huyện</label>
+              <label for="city" class="form__label form__label--small">ThÃ nh phá» / Quáº­n / Huyá»n</label>
               <div class="form__text-input form__text-input--small">
                 <input
                   type="text"
@@ -362,7 +364,7 @@
 
                 <!-- Select dialog -->
                 <div id="city-dialog" class="form__select-dialog hide">
-                  <h2 class="form__dialog-heading d-none d-sm-block">Thành phố / Quận / Huyện</h2>
+                  <h2 class="form__dialog-heading d-none d-sm-block">ThÃ nh phá» / Quáº­n / Huyá»n</h2>
                   <button class="form__close-dialog d-none d-sm-block js-toggle" toggle-target="#city-dialog">
                     &times
                   </button>
@@ -415,17 +417,17 @@
             <div class="form__group form__group--inline">
               <label class="form__checkbox">
                 <input type="checkbox" name="" id="" class="form__checkbox-input d-none" />
-                <span class="form__checkbox-label">Đặt làm địa chỉ giao hàng mặc định</span>
+                <span class="form__checkbox-label">Äáº·t lÃ m Äá»a chá» giao hÃ ng máº·c Äá»nh</span>
               </label>
             </div>
           </div>
           <div class="modal__bottom">
-            <button class="btn btn--small btn--text modal__btn js-toggle" toggle-target="#add-new-address">Hủy</button>
+            <button class="btn btn--small btn--text modal__btn js-toggle" toggle-target="#add-new-address">Há»§y</button>
             <button
               class="btn btn--small btn--primary modal__btn btn--no-margin js-toggle"
               toggle-target="#add-new-address"
             >
-              Lưu
+              LÆ°u
             </button>
           </div>
         </form>

@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib  uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,24 +54,24 @@
           <ul class="breadcrumbs checkout-page__breadcrumbs">
             <li>
               <a href="${pageContext.request.contextPath}/" class="breadcrumbs__link">
-                Trang chủ
+                Trang chá»§
                 <img src="${pageContext.request.contextPath}/assets/icons/arrow-right.svg" alt="" />
               </a>
             </li>
             <li>
               <a href="${pageContext.request.contextPath}/checkout.html" class="breadcrumbs__link">
-                Thanh toán
+                Thanh toÃ¡n
                 <img src="${pageContext.request.contextPath}/assets/icons/arrow-right.svg" alt="" />
               </a>
             </li>
             <li>
               <a href="${pageContext.request.contextPath}/shipping.html" class="breadcrumbs__link">
-                Giao hàng
+                Giao hÃ ng
                 <img src="${pageContext.request.contextPath}/assets/icons/arrow-right.svg" alt="" />
               </a>
             </li>
             <li>
-              <a href="#!" class="breadcrumbs__link breadcrumbs__link--current">Phương thức thanh toán</a>
+              <a href="#!" class="breadcrumbs__link breadcrumbs__link--current">PhÆ°Æ¡ng thá»©c thanh toÃ¡n</a>
             </li>
           </ul>
         </div>
@@ -81,11 +83,11 @@
               <div class="cart-info">
                 <div class="cart-info__top">
                   <h2 class="cart-info__heading cart-info__heading--lv2">
-                    1. Shipping, arrives between Mon, May 16—Tue, May 24
+                    1. Shipping, arrives between Mon, May 16âTue, May 24
                   </h2>
                   <a class="cart-info__edit-btn" href="${pageContext.request.contextPath}/shipping.html">
                     <img class="icon" src="${pageContext.request.contextPath}/assets/icons/edit.svg" alt="" />
-                    Chỉnh sửa
+                    Chá»nh sá»­a
                   </a>
                 </div>
 
@@ -93,24 +95,24 @@
                 <article class="payment-item">
                   <div class="payment-item__info">
                     <h3 class="payment-item__title">Dat cc</h3>
-                    <p class="payment-item__desc">nhà thổ hòa lạc</p>
+                    <p class="payment-item__desc">nhÃ  thá» hÃ²a láº¡c</p>
                   </div>
                 </article>
 
                 <!-- Payment item 2 -->
                 <article class="payment-item">
                   <div class="payment-item__info">
-                    <h3 class="payment-item__title">Chi tiết sản phẩm</h3>
-                    <p class="payment-item__desc">2 sản phẩm</p>
+                    <h3 class="payment-item__title">Chi tiáº¿t sáº£n pháº©m</h3>
+                    <p class="payment-item__desc">2 sáº£n pháº©m</p>
                   </div>
-                  <a href="${pageContext.request.contextPath}/shipping.html" class="payment-item__detail">Xem chi tiết</a>
+                  <a href="${pageContext.request.contextPath}/shipping.html" class="payment-item__detail">Xem chi tiáº¿t</a>
                 </article>
               </div>
 
               <div class="cart-info">
-                <h2 class="cart-info__heading cart-info__heading--lv2">2. Phương thức vận chuyển</h2>
+                <h2 class="cart-info__heading cart-info__heading--lv2">2. PhÆ°Æ¡ng thá»©c váº­n chuyá»n</h2>
                 <div class="cart-info__separate"></div>
-                <h3 class="cart-info__sub-heading">Phương thức vận chuyển </h3>
+                <h3 class="cart-info__sub-heading">PhÆ°Æ¡ng thá»©c váº­n chuyá»n </h3>
 
                 <!-- Payment item 3 -->
                 <label>
@@ -119,7 +121,7 @@
                     <div class="payment-item__content">
                       <div class="payment-item__info">
                         <h3 class="payment-item__title">Fedex Delivery</h3>
-                        <p class="payment-item__desc payment-item__desc--low">Giao hàng: 2-3 ngày làm việc</p>
+                        <p class="payment-item__desc payment-item__desc--low">Giao hÃ ng: 2-3 ngÃ y lÃ m viá»c</p>
                       </div>
 
                       <span class="cart-info__checkbox payment-item__checkbox">
@@ -129,7 +131,7 @@
                           checked
                           class="cart-info__checkbox-input payment-item__checkbox-input"
                         />
-                        <span class="payment-item__cost">Miễn phí</span>
+                        <span class="payment-item__cost">Miá»n phÃ­</span>
                       </span>
                     </div>
                   </article>
@@ -142,7 +144,7 @@
                     <div class="payment-item__content">
                       <div class="payment-item__info">
                         <h3 class="payment-item__title">DHL Delivery</h3>
-                        <p class="payment-item__desc payment-item__desc--low">Giao hàng: 2-3 ngày làm việc</p>
+                        <p class="payment-item__desc payment-item__desc--low">Giao hÃ ng: 2-3 ngÃ y lÃ m viá»c</p>
                       </div>
 
                       <span class="cart-info__checkbox payment-item__checkbox">
@@ -161,11 +163,11 @@
             <div class="col-4 col-xl-4 col-lg-12">
               <div class="cart-info">
                 <div class="cart-info__row">
-                  <span>Số lượng <span class="cart-info__sub-label">(sản phẩm)</span></span>
+                  <span>Sá» lÆ°á»£ng <span class="cart-info__sub-label">(sáº£n pháº©m)</span></span>
                   <span>3</span>
                 </div>
                 <div class="cart-info__row">
-                  <span>Giá tiền <span class="cart-info__sub-label">(Tạm tính)</span></span>
+                  <span>GiÃ¡ tiá»n <span class="cart-info__sub-label">(Táº¡m tÃ­nh)</span></span>
                   <span>$191.65</span>
                 </div>
                 <div class="cart-info__row">
@@ -174,10 +176,10 @@
                 </div>
                 <div class="cart-info__separate"></div>
                 <div class="cart-info__row">
-                  <span>Tổng tiền</span>
+                  <span>Tá»ng tiá»n</span>
                   <span>$201.65</span>
                 </div>
-                <a href="#!" class="cart-info__next-btn btn btn--primary btn--rounded">Trả ${total}</a>
+                <a href="#!" class="cart-info__next-btn btn btn--primary btn--rounded">Tráº£ ${total}</a>
               </div>
               <div class="cart-info">
                 <a href="#!">

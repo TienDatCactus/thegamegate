@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib  uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %><!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -78,7 +80,7 @@
 
                     <p class="auth__text">
                         Don't have an account ?
-                        <a href="${pageContext.request.contextPath}/SignUpControl" class="auth__link auth__text-link">­Sign-up here.</a>
+                        <a href="${pageContext.request.contextPath}/SignUpControl" class="auth__link auth__text-link">Â­Sign-up here.</a>
                     </p>
                 </div>
             </div>

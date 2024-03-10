@@ -1,4 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib  uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container">
     <div class="top-bar">
         <!-- Logo -->
@@ -21,7 +22,7 @@
                     <a href="${pageContext.request.contextPath}/" class="navbar__link gradient-text">Home</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="#!" class="navbar__link gradient-text">About Us</a>
+                    <a href="${pageContext.request.contextPath}/ItemListControl" class="navbar__link gradient-text">About Us</a>
                 </li>
             </ul>
         </nav>
