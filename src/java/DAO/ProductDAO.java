@@ -34,11 +34,10 @@ public class ProductDAO {
                 int productId = rs.getInt("ProductId");
                 String name = rs.getString("Name");
                 String description = rs.getString("Description");
-                int categoryId = rs.getInt("CategoryId");
                 int inStock = rs.getInt("InStock");
                 double price = rs.getDouble("Price");
                 String imagePath = rs.getString("ImagePath");
-                list.add(new Product(productId, name, description, categoryId, inStock, price, imagePath));
+                list.add(new Product(productId, name, description, inStock, price, imagePath));
             }
             return list;
         } catch (Exception e) {
@@ -58,11 +57,10 @@ public class ProductDAO {
                 int productId = rs.getInt(1);
                 String name = rs.getString(2);
                 String description = rs.getString(3);
-                int categoryId = rs.getInt(4);
-                int inStock = rs.getInt(5);
-                double price = rs.getDouble(6);
-                String imagePath = rs.getString(7);
-                p = new Product(productId, name, description, categoryId, inStock, price, imagePath);
+                int inStock = rs.getInt(4);
+                double price = rs.getDouble(5);
+                String imagePath = rs.getString(6);
+                p = new Product(productId, name, description, inStock, price, imagePath);
             }
             return p;
         } catch (Exception e) {
@@ -160,11 +158,10 @@ public class ProductDAO {
                 int productId = rs.getInt("ProductId");
                 String name = rs.getString("Name");
                 String description = rs.getString("Description");
-                int categoryId = rs.getInt("CategoryId");
                 int inStock = rs.getInt("InStock");
                 double price = rs.getDouble("Price");
                 String imagePath = rs.getString("ImagePath");
-                list.add(new Product(productId, name, description, categoryId, inStock, price, imagePath));
+                list.add(new Product(productId, name, description, inStock, price, imagePath));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -271,7 +268,6 @@ public class ProductDAO {
         String query = "UPDATE [dbo].[Products]\n"
                 + "   SET [Name] = ?\n"
                 + "      ,[Description] = ?\n"
-                + "      ,[CategoryID] = ?\n"
                 + "      ,[InStock] = ?\n"
                 + "      ,[Price] = ?\n"
                 + "      ,[ImagePath] = ?\n"
@@ -280,9 +276,9 @@ public class ProductDAO {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, prod.getName());
             ps.setString(2, prod.getDescription());
-            ps.setInt(3, prod.getCategoryId());
-            ps.setInt(4, prod.getInStock());
-            ps.setDouble(5, prod.getPrice());
+            ps.setInt(3, prod.getInStock());
+            ps.setDouble(4, prod.getPrice());
+            ps.setString(4, prod.getImagePath());
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
