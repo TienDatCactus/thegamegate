@@ -56,7 +56,7 @@
             <!-- Browse Categories -->
             <section class="home__container">
                 <div class="home__row">
-                    <h2 class="home__heading">Featured Games</h2>
+                    <h2 class="home__heading">Categorized : </h2>
                 </div>
                 <div class="home__cate row row-cols-3 row-cols-md-1">
                     <c:forEach items="${filtered}" var="pd" begin="2" end="4">
@@ -97,7 +97,7 @@
             <!-- Browse Products -->
             <section class="home__container">
                 <div class="home__row">
-                    <h2 class="home__heading">Category : </h2>
+                    <h2 class="home__heading">Featured Games</h2>
                     <div class="filter-wrap">
                         <button class="filter-btn js-toggle" toggle-target="#home-filter">
                             Filter
@@ -107,7 +107,7 @@
                         <div id="home-filter" class="filter hide">
                             <img src="${pageContext.request.contextPath}/assets/icons/arrow-up.png" alt="" class="filter__arrow" />
                             <h3 class="filter__heading">Sort by</h3>
-                            <form action="CategoryControl" class="filter__form form" method="post">
+                            <form action="${pageContext.request.contextPath}" class="filter__form form" method="post">
                                 <div class="filter__row filter__content">
                                     <!-- Filter column 1 -->
                                     <div class="filter__col">
@@ -165,7 +165,7 @@
                                 </div>
                                 <div class="filter__row filter__footer">
                                     <button class="btn btn--text filter__cancel js-toggle" toggle-target="#home-filter">Cancel</button>
-                                    <input class="btn btn--primary filter__submit js-toggle" toggle-target="#home-filter" type="submit" value="Find">
+                                    <input class="btn btn--primary filter__submit" type="submit" value="Find">
                                     </button>
                                 </div>
                             </form>

@@ -79,7 +79,7 @@
                             <div class="form__text-input">
                                 <input
                                     type="password"
-                                    name="verifyPassword"
+                                    name="password"
                                     id=""
                                     placeholder="password"
                                     class="form__input"
@@ -92,22 +92,7 @@
 
                             <p class="form__error">Invalid password format !</p>
                         </div>
-                        <div class="form__group">
-                            <div class="form__text-input">
-                                <input
-                                    type="password"
-                                    name="password"
-                                    id=""
-                                    placeholder="verify password"
-                                    class="form__input"
-                                    required
-                                    minlength="6"
-                                    />
-                                <img src="${pageContext.request.contextPath}/assets/icons/lock.svg" alt="" class="form__input-icon" />
-                                <img src="${pageContext.request.contextPath}/assets/icons/form-error.svg" alt="" class="form__input-icon-error" />
-                            </div>
-                            <p class="form__error">Invalid password format</p>
-                        </div>
+                   
                         <div class="form__group form__group--inline">
                             <label class="form__checkbox">
                                 <input type="checkbox" name="setDefaultSignIn" id="" class="form__checkbox-input d-none" />
@@ -115,7 +100,7 @@
                             </label>
                         </div>
                         <div class="form__group auth__btn-group">
-                            <button class="btn btn--primary auth__btn form__submit-btn"  type="submit" value="signup" >Sign Up</button>
+                            <input class="btn btn--primary auth__btn form__submit-btn"  type="submit" value="Sign Up" ></input>
                             <button class="btn btn--outline auth__btn btn--no-margin">
                                 <img src="${pageContext.request.contextPath}/assets/icons/google.svg" alt="" class="btn__icon icon"/>
                                 Sign in with Google

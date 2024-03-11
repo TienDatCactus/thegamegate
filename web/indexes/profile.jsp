@@ -36,7 +36,6 @@
             load("#header", "${pageContext.request.contextPath}/templates/header-logined.jsp");
         </script>
         <!-- MAIN -->
-        <c:include page="${pageContext.request.contextPath}/templates/header-logined.jsp"/>
         <main class="profile">
             <div class="container">
                 <!-- Profile content -->
