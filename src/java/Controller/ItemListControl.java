@@ -32,14 +32,16 @@ public class ItemListControl extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession sess = request.getSession();
         ProductDAO dao = new ProductDAO();
 
         List<Games> gameList = dao.getallGames();
         List<Product> productList = dao.getallProduct();
-
+        List<Language> langList = dao.getallLanguage();
+        List<Category> cateList = dao.getallCategory();
         request.setAttribute("gameList", gameList);
         request.setAttribute("productList", productList);
+        request.setAttribute("langList", langList);
+        request.setAttribute("cateList", cateList);
 
         request.getRequestDispatcher("/indexes/item-list.jsp").forward(request, response);
     }

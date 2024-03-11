@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -72,8 +73,8 @@
                                 <div class="cart-info__list">
                                     <c:forEach items="${productList}" var="pd">
                                         <article class="cart-item">
-                                            <a href="${pageContext.request.contextPath}/product-detail.html">
-                                                <img src="${pageContext.request.contextPath}/assets/img/product/item-1.png" alt="" class="cart-item__thumb" />
+                                            <a href="${pageContext.request.contextPath}/ProductControl?id=${pd.productId}">
+                                                <img src="${pageContext.request.contextPath}/${pd.imagePath}" alt="" class="cart-item__thumb" />
                                             </a>
                                             <div class="cart-item__content">
                                                 <div class="cart-item__content-left">
@@ -81,33 +82,41 @@
                                                         <a href="${pageContext.request.contextPath}/ProductControl?id=${pd.productId}">${pd.name}</a>
                                                     </h3>
                                                     <c:forEach items="${gameList}" var="gm">
-                                                        <c:if test="${pd.productId == game.productId}">
-                                                            <p class="cart-item__price-wrap">${gm.Publisher} | ${gm.developer}</p>
+                                                        <c:if test="${pd.productId == gm.productId}">
+                                                            <p class="cart-item__price-wrap">${gm.publisher} | ${gm.developer}</p>
                                                         </c:if>
                                                     </c:forEach>
-                                                    <span class="cart-item__status"> ${pd.inStock} </span>
+                                                    <span class="cart-item__status"> In Stock : ${pd.inStock} lefts</span>
                                                     <div class="cart-item__ctrl cart-item__ctrl--md-block">
                                                         <c:forEach items="${gameList}" var="gm">
-                                                            <c:if test="${pd.productId == game.productId}">
-                                                                <div class="cart-item__input">${gm.language}</div>
+                                                            <c:if test="${pd.productId == gm.productId}">
+                                                                <c:forEach items="${langList}" var="lang">
+                                                                    <c:if test="${gm.languageId == lang.languageId}">
+                                                                        <div class="cart-item__input">${lang.language}</div>   
+                                                                    </c:if>
+                                                                </c:forEach>
                                                             </c:if>
                                                         </c:forEach>
                                                         <div class="cart-item__input">
                                                             <c:forEach items="${gameList}" var="gm">
-                                                                <c:if test="${pd.productId == game.productId}">
-                                                                    <span>${cate.category}</span>
+                                                                <c:if test="${pd.productId == gm.productId}">
+                                                                    <c:forEach items="${cateList}" var="cate">
+                                                                        <c:if test="${gm.categoryId == cate.categoryId}">
+                                                                            <span>${cate.category}</span>
+                                                                        </c:if>
+                                                                    </c:forEach>
                                                                 </c:if>
                                                             </c:forEach>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="cart-item__content-right">
-                                                    <p class="cart-item__total-price">$47.00</p>
+                                                    <p class="cart-item__total-price">$${pd.price}</p>
                                                     <div class="cart-item__ctrl">
-                                                        <button class="cart-item__ctrl-btn js-toggle" toggle-target="#delete-confirm">
+                                                        <a class="cart-item__ctrl-btn" href="${pageContext.request.contextPath}/Delete?id=${pd.productId}">
                                                             <img src="${pageContext.request.contextPath}/assets/icons/trash.svg" alt="" />
                                                             Delete
-                                                        </button>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -132,14 +141,14 @@
                             <div class="cart-info">
                                 <div class="cart-info__row">
                                     <span>Amount <span class="cart-info__sub-label">( items ) :</span></span>
-                                    <span>3</span>
+                                    <span>${fn:length(productList)}</span>
                                 </div>
                                 <div class="cart-info__separate"></div>
                                 <div class="cart-info__row">
                                     <span>Total value :</span>
                                     <span>${procedure}</span>
                                 </div>
-                                <a href="${pageContext.request.contextPath}/shipping.html" class="cart-info__next-btn btn btn--primary btn--rounded">
+                                <a href="${pageContext.request.contextPath}/Add" class="cart-info__next-btn btn btn--primary btn--rounded">
                                     add more products
                                 </a>
                             </div>
@@ -155,21 +164,5 @@
             load("#footer", "${pageContext.request.contextPath}/templates/footer.jsp");
         </script>
 
-        <!-- Modal: confirm remove shopping cart item -->
-        <div id="delete-confirm" class="modal modal--small hide">
-            <div class="modal__content">
-                <p class="modal__text">Do you really want to delete this, boss ?</p>
-                <div class="modal__bottom">
-                    <button class="btn btn--small btn--outline modal__btn js-toggle" toggle-target="#delete-confirm">nah</button>
-                    <button
-                        class="btn btn--small btn--danger btn--primary modal__btn btn--no-margin js-toggle"
-                        toggle-target="#delete-confirm"
-                        >
-                        just, do it
-                    </button>
-                </div>
-            </div>
-            <div class="modal__overlay js-toggle" toggle-target="#delete-confirm"></div>
-        </div>
     </body>
 </html>
