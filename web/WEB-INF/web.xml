@@ -41,10 +41,6 @@
         <servlet-class>Controller.Delete</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CategoryControl</servlet-name>
-        <servlet-class>Controller.CategoryControl</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Add</servlet-name>
         <servlet-class>Controller.Add</servlet-class>
     </servlet>
@@ -95,10 +91,6 @@
     <servlet-mapping>
         <servlet-name>Delete</servlet-name>
         <url-pattern>/Delete</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CategoryControl</servlet-name>
-        <url-pattern>/CategoryControl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Add</servlet-name>
