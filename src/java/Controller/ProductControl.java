@@ -12,6 +12,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -20,8 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class ProductControl extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP codeGET/code and codePOST/code
-     * methods.
+     * Processes requests for both HTTP codeGET/code and codePOST/code methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -32,7 +32,7 @@ public class ProductControl extends HttpServlet {
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         ProductDAO dao = new ProductDAO();
-        
+
         Product pd = dao.getProductbyId(id);
         Games game = dao.getGamebyId(id);
         Category cate = dao.getCategoryById(id);
@@ -45,6 +45,17 @@ public class ProductControl extends HttpServlet {
         request.setAttribute("subcate", subcate);
         request.setAttribute("pd", pd);
 
+        List<Subcategory> subcateList = dao.getallSubCategory();
+        List<Category> cateList = dao.getallCategory();
+        List<Language> langList = dao.getallLanguage();
+        List<Product> productList = dao.getallProduct();
+        List<Games> gameList = dao.getallGames();
+
+        request.setAttribute("langList", langList);
+        request.setAttribute("productList", productList);
+        request.setAttribute("gameList", gameList);
+        request.setAttribute("cateList", cateList);
+        request.setAttribute("subcateList", subcateList);
         request.getRequestDispatcher("/indexes/product-detail.jsp").forward(request, response);
     }
 
