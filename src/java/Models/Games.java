@@ -1,24 +1,24 @@
 package Models;
 
-import java.util.*;
 import java.sql.Date;
 
 public class Games {
+
     int productId;
-    Date realeaseDate;
+    String releaseDate;
     String publisher;
     String developer;
     int languageId;
     int categoryId;
-    int subCategoryId;
-    float rate;
+    String subCategoryId;
+    String rate;
 
     public Games() {
     }
 
-    public Games(int productId, Date realeaseDate, String publisher, String developer, int languageId, int categoryId, int subCategoryId, float rate) {
+    public Games(int productId, String releaseDate, String publisher, String developer, int languageId, int categoryId, String subCategoryId, String rate) {
         this.productId = productId;
-        this.realeaseDate = realeaseDate;
+        this.releaseDate = releaseDate;
         this.publisher = publisher;
         this.developer = developer;
         this.languageId = languageId;
@@ -35,12 +35,12 @@ public class Games {
         this.productId = productId;
     }
 
-    public Date getRealeaseDate() {
-        return realeaseDate;
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setRealeaseDate(Date realeaseDate) {
-        this.realeaseDate = realeaseDate;
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public String getPublisher() {
@@ -75,28 +75,25 @@ public class Games {
         this.categoryId = categoryId;
     }
 
-    public int getSubCategoryId() {
+    public String getSubCategoryId() {
         return subCategoryId;
     }
 
-    public void setSubCategoryId(int subCategoryId) {
+    public void setSubCategoryId(String subCategoryId) {
         this.subCategoryId = subCategoryId;
     }
 
-    public float getRate() {
+    public String getRate() {
         return rate;
     }
 
-    public void setRate(float rate) {
+    public void setRate(String rate) {
         this.rate = rate;
     }
 
     @Override
     public String toString() {
-        return "Games{" + "productId=" + productId + ", realeaseDate=" + realeaseDate + ", publisher=" + publisher + ", developer=" + developer + ", languageId=" + languageId + ", categoryId=" + categoryId + ", subCategoryId=" + subCategoryId + ", rate=" + rate + '}';
+        return "Games{" + "productId=" + productId + ", releaseDate=" + releaseDate + ", publisher=" + publisher + ", developer=" + developer + ", languageId=" + languageId + ", categoryId=" + categoryId + ", subCategoryId=" + subCategoryId + ", rate=" + rate + '}';
     }
-    
-    
-    
-    
+
 }

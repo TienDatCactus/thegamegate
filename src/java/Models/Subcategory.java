@@ -10,10 +10,10 @@ package Models;
  */
 public class Subcategory {
 
-    float subcategoryId;
+    String subcategoryId;
     String subcategory;
 
-    public Subcategory(float subcategoryId, String subcategory) {
+    public Subcategory(String subcategoryId, String subcategory) {
         this.subcategoryId = subcategoryId;
         this.subcategory = subcategory;
     }
@@ -21,11 +21,11 @@ public class Subcategory {
     public Subcategory() {
     }
 
-    public float getSubcategoryId() {
+    public String getSubcategoryId() {
         return subcategoryId;
     }
 
-    public void setSubcategoryId(float subcategoryId) {
+    public void setSubcategoryId(String subcategoryId) {
         this.subcategoryId = subcategoryId;
     }
 

@@ -11,7 +11,6 @@ import java.util.*;
 import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.tomcat.dbcp.dbcp2.PoolingConnection;
 
 /**
  *
@@ -79,13 +78,13 @@ public class ProductDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int productId = rs.getInt(1);
-                Date releaseDate = rs.getDate(2);
+                String releaseDate = rs.getString(2);
                 String publisher = rs.getString(3);
                 String dev = rs.getString(4);
                 int languageId = rs.getInt(5);
                 int categoryId = rs.getInt(6);
-                int subcateId = rs.getInt(7);
-                float rate = rs.getFloat(8);
+                String subcateId = rs.getString(7);
+                String rate = rs.getString(8);
                 p = new Games(productId, releaseDate, publisher, dev, languageId, categoryId, subcateId, rate);
             }
             return p;
@@ -123,7 +122,7 @@ public class ProductDAO {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                float cateId = rs.getFloat(1);
+                String cateId = rs.getString(1);
                 String name = rs.getString(2);
                 p = new Subcategory(cateId, name);
             }
@@ -136,7 +135,7 @@ public class ProductDAO {
         return null;
     }
 
-    public List<Product> myFilter(float minPrice, float maxPrice, int language, int category) {
+    public List<Product> myFilter(int minPrice, int maxPrice, int language, int category) {
         List<Product> list = new ArrayList<>();
         String query = "SELECT * "
                 + "FROM Products "
@@ -149,8 +148,8 @@ public class ProductDAO {
             DBConnect db = new DBConnect();
             con = db.connection;
             ps = con.prepareStatement(query);
-            ps.setFloat(1, minPrice);
-            ps.setFloat(2, maxPrice);
+            ps.setInt(1, minPrice);
+            ps.setInt(2, maxPrice);
             ps.setInt(3, language);
             ps.setInt(4, category);
             rs = ps.executeQuery();
@@ -198,13 +197,13 @@ public class ProductDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 int productId = rs.getInt(1);
-                Date releaseDate = rs.getDate(2);
+                String releaseDate = rs.getString(2);
                 String publisher = rs.getString(3);
                 String developer = rs.getString(4);
                 int languageId = rs.getInt(5);
                 int categoryId = rs.getInt(6);
-                int subCategoryId = rs.getInt(7);
-                float rate = rs.getFloat(8);
+                String subCategoryId = rs.getString(7);
+                String rate = rs.getString(8);
                 list.add(new Games(productId, releaseDate, publisher, developer, languageId, categoryId, subCategoryId, rate));
             }
         } catch (Exception e) {
@@ -237,7 +236,7 @@ public class ProductDAO {
             ps = con.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                float subCategoryId = rs.getFloat(1);
+                String subCategoryId = rs.getString(1);
                 String subCategory = rs.getString(2);
                 list.add(new Subcategory(subCategoryId, subCategory));
             }
@@ -264,49 +263,23 @@ public class ProductDAO {
         return list;
     }
 
-    public void updateProduct(Product prod) {
+    public void updateProduct(int id, String name, String desc, int instock, double price, String img) {
         String query = "UPDATE [dbo].[Products]\n"
                 + "   SET [Name] = ?\n"
                 + "      ,[Description] = ?\n"
                 + "      ,[InStock] = ?\n"
                 + "      ,[Price] = ?\n"
                 + "      ,[ImagePath] = ?\n"
-                + " WHERE ProductId?";
+                + " WHERE ProductId = ?";
         try {
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, prod.getName());
-            ps.setString(2, prod.getDescription());
-            ps.setInt(3, prod.getInStock());
-            ps.setDouble(4, prod.getPrice());
-            ps.setString(4, prod.getImagePath());
-            ps.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void updateGame(Games game) {
-        String query = "UPDATE [dbo].[Games]\n"
-                + "   SET [ProductID] = ?\n"
-                + "      ,[ReleaseDate] = ?\n"
-                + "      ,[Publisher] = ?\n"
-                + "      ,[Developer] = ?\n"
-                + "      ,[LanguageID] = ?\n"
-                + "      ,[CategoryID] = ?\n"
-                + "      ,[SubcategoryID] = ?\n"
-                + "      ,[Rate] = ?\n"
-                + " WHERE ProducID = ?";
-        try {
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, game.getProductId());
-            ps.setDate(2, game.getRealeaseDate());
-            ps.setString(3, game.getPublisher());
-            ps.setString(4, game.getDeveloper());
-            ps.setInt(5, game.getCategoryId());
-            ps.setFloat(6, game.getSubCategoryId());
-            ps.setFloat(7, game.getRate());
-            ps.setInt(7 , game.getProductId());
-            ps.execute();
+            ps.setString(1, name);
+            ps.setString(2, desc);
+            ps.setInt(3, instock);
+            ps.setDouble(4, price);
+            ps.setString(5, img);
+            ps.setInt(6, id);
+            ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -314,7 +287,52 @@ public class ProductDAO {
 
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-        List<Language> pd = dao.getallLanguage();
-        System.out.println(pd);
+        dao.updateProduct(8, "Uncharted 4: A Thief's Ended", "Join Nathan Drake in his thrilling adventure for treasure and survival.", 70, 29.99, "/images/uncharted_4.jpg");
     }
+
+    public void updateGame(int id, String date, String publisher, String dev, int langId, int cateId, String subcateId) {
+        String query = "UPDATE [dbo].[Games]\n"
+                + "   SET [ReleaseDate] = ?\n"
+                + "      ,[Publisher] = ?\n"
+                + "      ,[Developer] = ?\n"
+                + "      ,[LanguageID] = ?\n"
+                + "      ,[CategoryID] = ?\n"
+                + "      ,[SubcategoryID] = ?\n"
+                + " WHERE ProductID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, date);
+            ps.setString(2, publisher);
+            ps.setString(3, dev);
+            ps.setInt(4, langId);
+            ps.setInt(5, cateId);
+            ps.setString(6, subcateId);
+            ps.setInt(7, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(int id) {
+        String query = "DELETE FROM [dbo].[Games]\n"
+                + "      WHERE ProductID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        query = "DELETE FROM [dbo].[Products]\n"
+                + "      WHERE ProductID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
