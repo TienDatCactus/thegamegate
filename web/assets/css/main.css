@@ -1790,6 +1790,8 @@ html {
     background-clip: text;
     -webkit-background-clip: text;
     color: rgba(0, 0, 0, 1);
+    font-weight: 600;
+
 }
 
 .gradient-text:hover {
@@ -5119,7 +5121,9 @@ footer {
     font-weight: 500;
     line-height: 144.444%;
 }
-
+.cart-item__title a {
+    color: var(--text-color);
+}
 .cart-item__price-wrap {
     margin: 16px 0;
     color: #9e9da8;
