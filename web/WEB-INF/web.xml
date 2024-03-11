@@ -13,10 +13,6 @@
         <servlet-class>Controller.HomeControl</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CategoryControl</servlet-name>
-        <servlet-class>Controller.CategoryControl</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LogOutControl</servlet-name>
         <servlet-class>Controller.LogOutControl</servlet-class>
     </servlet>
@@ -35,6 +31,22 @@
     <servlet>
         <servlet-name>EditProductControl</servlet-name>
         <servlet-class>Controller.EditProductControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ItemListControl</servlet-name>
+        <servlet-class>Controller.ItemListControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Delete</servlet-name>
+        <servlet-class>Controller.Delete</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CategoryControl</servlet-name>
+        <servlet-class>Controller.CategoryControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Add</servlet-name>
+        <servlet-class>Controller.Add</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
@@ -57,10 +69,6 @@
         <url-pattern>/LoginControl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CategoryControl</servlet-name>
-        <url-pattern>/CategoryControl</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>LogOutControl</servlet-name>
         <url-pattern>/LogOutControl</url-pattern>
     </servlet-mapping>
@@ -79,5 +87,21 @@
     <servlet-mapping>
         <servlet-name>EditProductControl</servlet-name>
         <url-pattern>/EditProductControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ItemListControl</servlet-name>
+        <url-pattern>/ItemListControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Delete</servlet-name>
+        <url-pattern>/Delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoryControl</servlet-name>
+        <url-pattern>/CategoryControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Add</servlet-name>
+        <url-pattern>/Add</url-pattern>
     </servlet-mapping>
 </web-app>
