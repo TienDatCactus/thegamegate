@@ -26,32 +26,23 @@ public class SignUpControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String firstName = request.getParameter("firstname");
-            String lastName = request.getParameter("lastname");
-            int telephone = Integer.parseInt(request.getParameter("telephone"));
-            String address = request.getParameter("address");
+        String firstName = request.getParameter("firstname");
+        String lastName = request.getParameter("lastname");
+        int telephone = Integer.parseInt(request.getParameter("telephone"));
+        String address = request.getParameter("address");
 
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            String verifyPassword = request.getParameter("verifyPassword");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        
+        SignUpDAO signUp = new SignUpDAO();
+        boolean success = signUp.checkSignUpAccount(email, password);
 
-            if (!password.equals(verifyPassword)) {
-                response.sendRedirect(request.getContextPath() + "/SignUpControl");
-                return;
-            }
-            SignUpDAO signUp = new SignUpDAO();
-            boolean success = signUp.checkSignUp(firstName, lastName, telephone, address, email, password);
-
-            if (success) {
-                response.sendRedirect(request.getContextPath() + "/LoginControl");
-            } else {
-                response.sendRedirect(request.getContextPath() + "/SignUpControl");
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (success) {
+            response.sendRedirect(request.getContextPath() + "/LoginControl");
+        } else {
+            response.sendRedirect(request.getContextPath() + "/SignUpControl");
         }
+
     }
 
 }

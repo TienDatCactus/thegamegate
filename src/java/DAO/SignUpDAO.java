@@ -15,37 +15,29 @@ import java.sql.ResultSet;
  */
 public class SignUpDAO {
 
-    Connection con = null;
     PreparedStatement ps = null;
     UsersAccount ua = null;
     ResultSet rs = null;
+    DBConnect db = new DBConnect();
+    Connection con = db.connection;
 
-    public boolean checkSignUp(String firstname, String lastname, int telephone, String address, String email, String password) {
+    public boolean checkSignUpAccount(String email, String password) {
         if (userExisted(email)) {
             return false;
         }
+        String query = "INSERT INTO [dbo].[UsersAccount]\n"
+                + "           ([Email]\n"
+                + "           ,[Password])\n"
+                + "     VALUES\n"
+                + "           (? , ?)";
         try {
-            String query = "INSERT INTO UsersAccount (Email, Password) VALUES (?, ?)";
-            DBConnect db = new DBConnect();
-            con = db.connection;
             ps = con.prepareStatement(query);
             ps.setString(1, email);
             ps.setString(2, password);
-            int signedUp = ps.executeUpdate();
-
-            String query2 = "INSERT INTO Users (FirstName, LastName, Telephone, Address) VALUES (?, ?, ?, ?)";
-            ps = con.prepareStatement(query2);
-            ps.setString(1, firstname);
-            ps.setString(2, lastname);
-            ps.setInt(3, telephone);
-            ps.setString(4, address);
-            int usersInserted = ps.executeUpdate();
-
-            if (signedUp > 0 && usersInserted > 0) {
-                con.commit();
+            boolean signedUp = ps.execute();
+            if (signedUp) {
                 return true;
             } else {
-                con.rollback();
                 return false;
             }
         } catch (Exception e) {
@@ -57,12 +49,12 @@ public class SignUpDAO {
     public boolean userExisted(String email) {
         try {
             String query = "select * from UsersAccounts where Email = ?";
-            DBConnect db = new DBConnect();
-            con = db.connection;
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, email);
-            rs = ps.executeQuery();
-            return rs.next();
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
