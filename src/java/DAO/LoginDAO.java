@@ -29,7 +29,8 @@ public class LoginDAO {
                     int id = rs.getInt(1);
                     String mail = rs.getString(2);
                     String pass = rs.getString(3);
-                    ua = new UsersAccount(id, mail, pass);
+                    int admin = rs.getInt(4);
+                    ua = new UsersAccount(id, mail, pass,admin);
                     return ua;
                 }
             }

@@ -21,34 +21,46 @@ public class SignUpDAO {
     DBConnect db = new DBConnect();
     Connection con = db.connection;
 
-    public boolean checkSignUpAccount(String email, String password) {
+    public boolean checkSignUpAccount(int id,String email, String password) {
         if (userExisted(email)) {
             return false;
         }
-        String query = "INSERT INTO [dbo].[UsersAccount]\n"
-                + "           ([Email]\n"
-                + "           ,[Password])\n"
-                + "     VALUES\n"
-                + "           (? , ?)";
+        String query = "INSERT INTO [dbo].[UsersAccount] ([UserID] ,[Email] ,[Password]) VALUES (? ,? ,?)";
         try {
             ps = con.prepareStatement(query);
-            ps.setString(1, email);
-            ps.setString(2, password);
-            boolean signedUp = ps.execute();
-            if (signedUp) {
-                return true;
-            } else {
-                return false;
-            }
+            ps.setInt(1, id);
+            ps.setString(2, email);
+            ps.setString(3, password);
+            ps.executeUpdate();
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
+    }
+    public static void main(String[] args) {
+        SignUpDAO dao = new SignUpDAO();
+    }
+    public boolean addUser(int id,String fname, String lname, String tele, String add) {
+        String query = "INSERT INTO [dbo].[Users] ([UserID] ,[FirstName] ,[LastName] ,[Telephone] ,[Address]) VALUES (? ,? ,? ,? ,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1,id);
+            ps.setString(2, fname);
+            ps.setString(3, lname);
+            ps.setString(4, tele);
+            ps.setString(5, add);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public boolean userExisted(String email) {
+        String query = "select * from UsersAccount where Email = ?";
         try {
-            String query = "select * from UsersAccounts where Email = ?";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
