@@ -46,6 +46,7 @@
                 response.sendRedirect(request.getContextPath() + "/LoginControl");
                 return;
             }
+            int admin = ua.getAdmin();
             int id = ua.getUserId();
             UserDAO dao = new UserDAO();
 
@@ -57,7 +58,7 @@
             String password = request.getParameter("password");
 
             Users user = new Users(id, firstName, lastName, telephone, address);
-            UsersAccount usa = new UsersAccount(id, email, password);
+            UsersAccount usa = new UsersAccount(id, email, password,admin);
 
             Object update = request.getParameter("update");
             boolean ok = (update != null);

@@ -55,13 +55,11 @@ public class EditProductControl extends HttpServlet {
             throws ServletException, IOException {
         ProductDAO dao = new ProductDAO();
         int id = Integer.parseInt(request.getParameter("id"));
-
 //      Product
         String name = request.getParameter("name");
         String desc = request.getParameter("description");
         int inStock = Integer.parseInt(request.getParameter("instock"));
         double price = Double.parseDouble(request.getParameter("price"));
-        String imagePath = request.getParameter("imagePath");
 
 //      Game
         String releaseDate = (request.getParameter("releaseDate"));
@@ -72,7 +70,7 @@ public class EditProductControl extends HttpServlet {
         int languageId = Integer.parseInt(request.getParameter("language"));
 
         dao.updateGame(id, releaseDate, publisher, developer, languageId, categoryId, subcategoryId);
-        dao.updateProduct(id, name, desc, inStock, price, imagePath);
+        dao.updateProduct(id, name, desc, inStock, price);
         response.sendRedirect(request.getContextPath() +"/");
     }
 
