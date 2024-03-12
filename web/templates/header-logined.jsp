@@ -52,7 +52,7 @@
                                     <img src="./assets/icons/arrow-up.png" alt="" class="act-dropdown__arrow" />
                                     <div class="act-dropdown__top">
                                         <h2 class="act-dropdown__title">You have 3 items</h2>
-                                        <a href="./checkout.html" class="act-dropdown__view-all">View Cart Items</a>
+                                        <a href="${pageContext.request.contextPath}/indexes/checkout.jsp" class="act-dropdown__view-all">View Cart Items</a>
                                     </div>
                                     <div class="row row-cols-3 gx-2 act-dropdown__list">
                                         <!-- Cart preview item 1 -->

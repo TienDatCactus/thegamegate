@@ -86,7 +86,6 @@ video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -127,7 +126,9 @@ blockquote,
 q {
     quotes: none;
 }
-
+*{
+    transition: 0.3s ease-in-out ;
+}
 blockquote:before,
 blockquote:after,
 q:before,

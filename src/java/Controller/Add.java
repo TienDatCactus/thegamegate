@@ -87,7 +87,7 @@ public class Add extends HttpServlet {
         PrintWriter out = response.getWriter();
        
  dao.addGame(id, date, publisher, dev, language, category, subcategory);
-//        dao.addProduct(id, name, desc, inStock, price, imagePath);
+        dao.addProduct(id, name, desc, inStock, price, imagePath);
         response.sendRedirect(request.getContextPath() + "/ItemListControl");
 
 

@@ -22,16 +22,16 @@
     />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 
     <!-- Scripts -->
-    <script src="/assets/js/scripts.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/scripts.js"></script>
   </head>
   <body>
     <!-- Header -->
     <header id="header" class="header"></header>
     <script>
-      load("#header", "/templates/header-logined.html");
+      load("#header", "${pageContext.request.contextPath}/templates/header-logined.jsp");
     </script>
 
     <!-- MAIN -->
@@ -180,13 +180,13 @@
     <!-- Footer -->
     <footer id="footer" class="footer"></footer>
     <script>
-      load("#footer", "${pageContext.request.contextPath}/templates/footer.html");
+      load("#footer", "${pageContext.request.contextPath}/templates/footer.jsp");
     </script>
 
     <!-- Modal: confirm remove shopping cart item -->
     <div id="delete-confirm" class="modal modal--small hide">
       <div class="modal__content">
-        <p class="modal__text">Bạn có muốn xóa sản phẩm này khỏi giỏ hàng ?</p>
+        <p class="modal__text"></p>
         <div class="modal__bottom">
           <button class="btn btn--small btn--outline modal__btn js-toggle" toggle-target="#delete-confirm">
             Hủy
