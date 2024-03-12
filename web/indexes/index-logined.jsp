@@ -56,10 +56,10 @@
             <!-- Browse Categories -->
             <section class="home__container">
                 <div class="home__row">
-                    <h2 class="home__heading">Categorized : </h2>
+                    <h2 class="home__heading">Categorized :</h2>
                 </div>
                 <div class="home__cate row row-cols-3 row-cols-md-1">
-                    <c:forEach items="${filtered}" var="pd" begin="2" end="4">
+                    <c:forEach items="${filtered}" var="pd">
                         <div class="col product-section">
                             <article class="product-card">
                                 <div class="product-card__img-wrap">
@@ -107,7 +107,7 @@
                         <div id="home-filter" class="filter hide">
                             <img src="${pageContext.request.contextPath}/assets/icons/arrow-up.png" alt="" class="filter__arrow" />
                             <h3 class="filter__heading">Sort by</h3>
-                            <form action="${pageContext.request.contextPath}" class="filter__form form" method="post">
+                            <form action="${pageContext.request.contextPath}/" class="filter__form form" method="post">
                                 <div class="filter__row filter__content">
                                     <!-- Filter column 1 -->
                                     <div class="filter__col">
@@ -174,7 +174,7 @@
                 </div>
 
                 <div class="row row-cols-5 row-cols-lg-2 row-cols-sm-1 g-3">
-                    <c:forEach items="${productList}" var="pd" begin="1" end="10">
+                    <c:forEach items="${productList}" var="pd"  begin="${page.begin}" end="${page.end + 6}">
                         <div class="col product-section">
                             <article class="product-card">
                                 <div class="product-card__img-wrap">
@@ -210,7 +210,29 @@
                 </div>
             </section>
         </main>
-
+        <div class="paging">
+            <c:if test="${page.index != 0}">
+                <span class="btn">
+                    <a href='${pageContext.request.contextPath}/?index=0' > Home </a>
+                </span>
+                <span class="btn">
+                    <a href='${pageContext.request.contextPath}/?index=${page.index -1}'> Previous </a>
+                </span>
+            </c:if>
+            <c:forEach var="p" begin='${page.pageStart}' end='${page.pageEnd}'>
+                <span class="btn">
+                    <a href='${pageContext.request.contextPath}/?index=${p} '> Trang  ${p +1}</a>
+                </span>
+            </c:forEach>
+            <c:if test = "${page.index  != page.totalPage - 1}">
+                <span class="btn">
+                    <a href='${pageContext.request.contextPath}/?index=${page.index+1}' > Next</a>
+                </span>
+                <span class="btn">
+                    <a href='${pageContext.request.contextPath}/?index=${page.totalPage-1}' > End </a>
+                </span>
+            </c:if>
+        </div>
         <!-- Footer -->
         <footer id="footer" class="footer"></footer>
         <script>
