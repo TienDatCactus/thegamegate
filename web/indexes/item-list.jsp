@@ -83,7 +83,7 @@
                                                     </h3>
                                                     <c:forEach items="${gameList}" var="gm">
                                                         <c:if test="${pd.productId == gm.productId}">
-                                                            <p class="cart-item__price-wrap">${gm.publisher} | ${gm.developer}</p>
+                                                            <p class="cart-item__price-wrap" style="margin-top: 5px;">${gm.publisher} | ${gm.developer}</p>
                                                         </c:if>
                                                     </c:forEach>
                                                     <span class="cart-item__status"> In Stock : ${pd.inStock} lefts</span>

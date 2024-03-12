@@ -48,11 +48,11 @@
                                 Add new game
                             </h2>
 
-                            <form action="${pageContext.request.contextPath}/" class="form form-card">
+                            <form action="${pageContext.request.contextPath}/Add" class="form form-card" method="post">
                                 <!-- Form row 1 -->
                                 <div class="form__row">
                                     <div class="form__group">
-                                        <label for="last-name" class="form__label form-card__label"> Game's title : </label>
+                                        <label  class="form__label form-card__label"> Game's title : </label>
                                         <div class="form__text-input">
                                             <input
                                                 type="text"
@@ -70,7 +70,7 @@
                                 <div class="form__row">
 
                                     <div class="form__group">
-                                        <label for="last-name" class="form__label form-card__label"> Game's description : </label>
+                                        <label  class="form__label form-card__label"> Game's description : </label>
                                         <div class="form__text-input">
                                             <input
                                                 type="text"
@@ -89,37 +89,37 @@
                                 <!-- Form row 2 -->
                                 <div class="form__row">
                                     <div class="form__group">
-                                        <label for="card-number" class="form__label form-card__label"> Category : </label>
-                                        <select name="category" class="form_select form__text-input" style="width: 100%;font-size: 1.6rem;font-weight: 500>
-                                                <c:forEach items="${cateList}" var="cate">
-                                                    <option value="${cate.categoryId}" class="form_select-items" ${(gm.categoryId == cate.categoryId) ? "selected" : ""} >${cate.category}</option>
-                                                </c:forEach>
+                                        <label  class="form__label form-card__label"> Category : </label>
+                                        <select name="category" class="form_select form__text-input" style="width: 100%;font-size: 1.6rem;font-weight: 500">
+                                            <c:forEach items="${cateList}" var="cate">
+                                                <option value="${cate.categoryId}" class="form_select-items" >${cate.category}</option>
+                                            </c:forEach>
                                         </select>
                                         <p class="form__error">Crazy to think that you don't even know wtf is a category ...</p>
                                     </div>
                                     <div class="form__group">
-                                        <label for="card-cvv" class="form__label form-card__label"> The "child" of Category :
+                                        <label  class="form__label form-card__label"> The "child" of Category :
                                         </label>
                                         <select name="subcategory" class="form_select form__text-input" style="width: 100%;font-size: 1.6rem;font-weight: 500">
                                             <c:forEach items="${subcateList}" var="subcate">
-                                                <option value="${subcate.subcategoryId}" class="form_select-items" ${(gm.subCategoryId == subcate.subcategoryId) ? "selected" : ""} >${subcate.subcategory}</option>
+                                                <option value="${subcate.subcategoryId}" class="form_select-items"  >${subcate.subcategory}</option>
                                             </c:forEach>
                                         </select>
                                         <p class="form__error">what a father, doesn't even know his own sons ...</p>
                                     </div>
                                     <div class="form__group">
-                                        <label for="card-cvv" class="form__label form-card__label"> Language : </label>
+                                        <label  class="form__label form-card__label"> Language : </label>
                                         <select name="language" class="form_select form__text-input" style="width: 100%;font-size: 1.6rem;font-weight: 500">
                                             <c:forEach items="${langList}" var="lang">
-                                                <option value="${lang.languageId}" class="form_select-items" ${(gm.languageId == lang.languageId) ? "selected" : ""} >${lang.language}</option>
+                                                <option value="${lang.languageId}" class="form_select-items" >${lang.language}</option>
                                             </c:forEach>
                                         </select>
-                                        <p class="form__error">jet'aime le pÃµrno</p>
+                                        <p class="form__error">jet'aime le põrno</p>
                                     </div>
                                     <div class="form__group">
-                                        <label for="expiration-date" class="form__label form-card__label">Release Date : </label>
+                                        <label  class="form__label form-card__label">Release Date : </label>
                                         <div class="form__text-input">
-                                            <input type="date" name="releaseDate" id="releaseDate"  value="${gm.releaseDate}" required style="width: 100%;font-size: 1.6rem;font-weight: 500">
+                                            <input type="text" name="releaseDate" id="releaseDate" placeholder="yyyy-mm-dd" required style="width: 100%;font-size: 1.6rem;font-weight: 500">
                                             <img src="${pageContext.request.contextPath}/assets/icons/form-error.svg" alt="" class="form__input-icon-error" />
                                         </div>
                                         <p class="form__error">Even date and time was not included in your knowledge ...</p>
@@ -129,7 +129,7 @@
                                 <!-- Form row 3 -->
                                 <div class="form__row">
                                     <div class="form__group">
-                                        <label for="first-name" class="form__label form-card__label">Publisher :</label>
+                                        <label  class="form__label form-card__label">Publisher :</label>
                                         <div class="form__text-input">
                                             <input
                                                 type="text"
@@ -145,7 +145,7 @@
                                         <p class="form__error">That's not the mom !</p>
                                     </div>
                                     <div class="form__group">
-                                        <label for="last-name" class="form__label form-card__label"> Developer : </label>
+                                        <label  class="form__label form-card__label"> Developer : </label>
                                         <div class="form__text-input">
                                             <input
                                                 type="text"
@@ -163,10 +163,10 @@
                                 <!-- Form row 4-->
                                 <div class="form__row">
                                     <div class="form__group">
-                                        <label for="last-name" class="form__label form-card__label"> How many in the garage : </label>
+                                        <label  class="form__label form-card__label"> How many in the garage : </label>
                                         <div class="form__text-input">
                                             <input
-                                                type="text"
+                                                type="number"
                                                 name="inStock"
                                                 id="instock"
                                                 placeholder="give it to me"
@@ -179,10 +179,10 @@
                                     </div>
 
                                     <div class="form__group">
-                                        <label for="last-name" class="form__label form-card__label"> Price : </label>
+                                        <label class="form__label form-card__label"> Price : </label>
                                         <div class="form__text-input">
                                             <input
-                                                type="text"
+                                                type="number"
                                                 name="price"
                                                 id="price"
                                                 placeholder="take the money already"
@@ -193,39 +193,25 @@
                                         </div>
                                         <p class="form__error">don't make it too high , please...</p>
                                     </div>
-
                                     <div class="form__group">
-                                        <label for="last-name" class="form__label form-card__label"> Image of the game : </label>
+                                        <label class="form__label form-card__label">Image URL : /images/*name </label>
                                         <div class="form__text-input">
-                                            <input style="position: relative;top: 10px;"
-                                                   type="file"
-                                                   name="image"
-                                                   id="image"
-                                                   class="form__input"
-                                                   required
-                                                   />
+                                            <input
+                                                type="text"
+                                                name="image"
+                                                id="image"
+                                                class="form__input"
+                                                placeholder="sorry, don't have time + knowledge to handle files"
+                                                />
                                             <img src="${pageContext.request.contextPath}/assets/icons/form-error.svg" alt="" class="form__input-icon-error" />
                                         </div>
                                         <p class="form__error">this file may give you 1 billion viruses</p>
                                     </div>
                                 </div>
-                                <div class="form__group">
-                                    <label for="set-default-card" class="form__label form-card__label"> this checkbox is useless</label>
-                                    <label class="form__checkbox">
-                                        <input
-                                            type="checkbox"
-                                            name=""
-                                            id="set-default-card"
-                                            checked
-                                            class="form__checkbox-input d-none"
-                                            />
-                                        <span class="form__checkbox-label">don't try to tick it it won't do anything</span>
-                                    </label>
-                                </div>
 
                                 <div class="form-card__bottom">
-                                    <a class="btn btn--text" href="./profile.html">Hủy</a>
-                                    <button class="btn btn--primary btn--rounded">Lưu</button>
+                                    <a class="btn btn--text" href="${pageContext.request.contextPath}/">Cancel</a>
+                                    <input type="submit" value="Proceed" class="btn btn--primary btn--rounded" ></button>
                                 </div>
                             </form>
                         </div>

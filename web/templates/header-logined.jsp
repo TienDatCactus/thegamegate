@@ -21,9 +21,11 @@
                 <li class="navbar__item">
                     <a href="${pageContext.request.contextPath}/" class="navbar__link gradient-text">Home</a>
                 </li>
-                <li class="navbar__item">
-                    <a href="${pageContext.request.contextPath}/ItemListControl" class="navbar__link gradient-text">About Us</a>
-                </li>
+                <c:if test="${user.admin == 1}">
+                    <li class="navbar__item">
+                        <a href="${pageContext.request.contextPath}/ItemListControl" class="navbar__link gradient-text">Manage Products</a>
+                    </li>
+                </c:if>
             </ul>
         </nav>
         <div class="navbar__overlay js-toggle" toggle-target="#navbar"></div>
@@ -57,9 +59,9 @@
                                         <div class="col">
                                             <article class="cart-preview-item">
                                                 <div class="cart-preview-item__img-wrap">
-                                                    <img src="./assets/img/product/item-1.png" alt="" class="cart-preview-item__thumb" />
+                                                    <img src="" alt="" class="cart-preview-item__thumb" />
                                                 </div>
-                                                <h3 class="cart-preview-item__title">Lavazza Coffee Blends</h3>
+                                                <h3 class="cart-preview-item__title">Dying Light</h3>
                                                 <p class="cart-preview-item__price">$329.00</p>
                                             </article>
                                         </div>
@@ -68,9 +70,9 @@
                                         <div class="col">
                                             <article class="cart-preview-item">
                                                 <div class="cart-preview-item__img-wrap">
-                                                    <img src="./assets/img/product/item-2.png" alt="" class="cart-preview-item__thumb" />
+                                                    <img src="" alt="" class="cart-preview-item__thumb" />
                                                 </div>
-                                                <h3 class="cart-preview-item__title">Coffee Beans Espresso</h3>
+                                                <h3 class="cart-preview-item__title">The Last Of Us</h3>
                                                 <p class="cart-preview-item__price">$39.99</p>
                                             </article>
                                         </div>
@@ -79,9 +81,9 @@
                                         <div class="col">
                                             <article class="cart-preview-item">
                                                 <div class="cart-preview-item__img-wrap">
-                                                    <img src="./assets/img/product/item-3.png" alt="" class="cart-preview-item__thumb" />
+                                                    <img src="" alt="" class="cart-preview-item__thumb" />
                                                 </div>
-                                                <h3 class="cart-preview-item__title">Qualit Oro Mountain</h3>
+                                                <h3 class="cart-preview-item__title">NFL 22</h3>
                                                 <p class="cart-preview-item__price">$47.00</p>
                                             </article>
                                         </div>
