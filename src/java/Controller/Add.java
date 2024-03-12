@@ -66,18 +66,31 @@ public class Add extends HttpServlet {
         request.getRequestDispatcher("/indexes/add-new-game.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        ProductDAO dao = new ProductDAO();
+        List<Games> game = dao.getallGames();
+        int id = game.size() + 4;
+        String desc = request.getParameter("description");
+        String name = request.getParameter("name");
+        int inStock = Integer.parseInt(request.getParameter("inStock"));
+        double price = Double.parseDouble(request.getParameter("price"));
+        String imagePath = request.getParameter("image");
+        dao.addProduct(id, name, desc, inStock, price, imagePath);
+        String date = request.getParameter("releaseDate");
+        String publisher = request.getParameter("publisher");
+        String dev = request.getParameter("developer");
+        int category = Integer.parseInt(request.getParameter("category"));
+        String subcategory = request.getParameter("subcategory");
+        int language = Integer.parseInt(request.getParameter("language"));
+        PrintWriter out = response.getWriter();
+       
+ dao.addGame(id, date, publisher, dev, language, category, subcategory);
+//        dao.addProduct(id, name, desc, inStock, price, imagePath);
+        response.sendRedirect(request.getContextPath() + "/ItemListControl");
+
+
     }
 
     /**

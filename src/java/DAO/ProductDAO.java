@@ -116,7 +116,6 @@ public class ProductDAO {
     public Subcategory getSubCategoryById(int id) {
         Subcategory p = null;
         String query = "select pc.SubcategoryID, pc.Name from ProductSubcategories pc join Games ga on pc.SubcategoryID = ga.SubcategoryID where ga.ProductID = ? ";
-        PreparedStatement ps;
         try {
             ps = con.prepareStatement(query);
             ps.setInt(1, id);
@@ -135,6 +134,12 @@ public class ProductDAO {
         return null;
     }
 
+    public static void main(String[] args) {
+        ProductDAO dao = new ProductDAO();
+        List<Product> list = dao.myFilter(1, 100, 2, 2);
+        System.out.println(list);
+    }
+
     public List<Product> myFilter(int minPrice, int maxPrice, int language, int category) {
         List<Product> list = new ArrayList<>();
         String query = "SELECT * "
@@ -142,11 +147,9 @@ public class ProductDAO {
                 + "JOIN Games ON Products.ProductID = Games.ProductID "
                 + "WHERE Products.Price BETWEEN ? AND ? "
                 + "AND Games.LanguageID = ? "
-                + "AND Products.CategoryID = ?";
+                + "AND Games.CategoryID = ?";
 
         try {
-            DBConnect db = new DBConnect();
-            con = db.connection;
             ps = con.prepareStatement(query);
             ps.setInt(1, minPrice);
             ps.setInt(2, maxPrice);
@@ -263,13 +266,12 @@ public class ProductDAO {
         return list;
     }
 
-    public void updateProduct(int id, String name, String desc, int instock, double price, String img) {
+    public void updateProduct(int id, String name, String desc, int instock, double price) {
         String query = "UPDATE [dbo].[Products]\n"
                 + "   SET [Name] = ?\n"
                 + "      ,[Description] = ?\n"
                 + "      ,[InStock] = ?\n"
                 + "      ,[Price] = ?\n"
-                + "      ,[ImagePath] = ?\n"
                 + " WHERE ProductId = ?";
         try {
             PreparedStatement ps = con.prepareStatement(query);
@@ -277,17 +279,11 @@ public class ProductDAO {
             ps.setString(2, desc);
             ps.setInt(3, instock);
             ps.setDouble(4, price);
-            ps.setString(5, img);
-            ps.setInt(6, id);
+            ps.setInt(5, id);
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        ProductDAO dao = new ProductDAO();
-        dao.updateProduct(8, "Uncharted 4: A Thief's Ended", "Join Nathan Drake in his thrilling adventure for treasure and survival.", 70, 29.99, "/images/uncharted_4.jpg");
     }
 
     public void updateGame(int id, String date, String publisher, String dev, int langId, int cateId, String subcateId) {
@@ -332,6 +328,45 @@ public class ProductDAO {
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+
+    }
+
+    public boolean addProduct(int id, String name, String desc, int instock, double price, String image) {
+        String query = "INSERT INTO [dbo].[Products] ([ProductID],[Name] ,[Description] ,[InStock] ,[Price] ,[ImagePath]) VALUES (? ,? ,? ,? ,?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.setString(2, name);
+            ps.setString(3, desc);
+            ps.setInt(4, instock);
+            ps.setDouble(5, price);
+            ps.setString(6, image);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean addGame(int id, String date, String publisher, String dev, int langId, int cateId, String subcateId) {
+        String query = "INSERT INTO [dbo].[Games] ([ProductID] ,[ReleaseDate] ,[Publisher] ,[Developer] ,[LanguageID] ,[CategoryID] ,[SubcategoryID] ,[Rate]) VALUES (? ,? ,? ,? ,? ,? ,? ,?) ";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.setString(2, date);
+            ps.setString(3, publisher);
+            ps.setString(4, dev);
+            ps.setInt(5, langId);
+            ps.setInt(6, cateId);
+            ps.setString(7, subcateId);
+            ps.setDouble(8, 4.3);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
