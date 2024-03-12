@@ -39,16 +39,6 @@
         <!-- MAIN -->
         <main class="profile">
             <div class="container">
-                <!-- Search bar -->
-                <div class="profile-container">
-                    <div class="search-bar d-none d-md-flex">
-                        <input type="text" name="" id="" placeholder="Search for item" class="search-bar__input" />
-                        <button class="search-bar__submit">
-                            <img src="${pageContext.request.contextPath}/assets/icons/search.svg" alt="" class="search-bar__icon icon" />
-                        </button>
-                    </div>
-                </div>
-
                 <div class="profile-container">
                     <div class="row gy-md-3">
                         <div class="col-3 col-xl-4 d-lg-none">

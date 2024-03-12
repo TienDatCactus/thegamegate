@@ -69,7 +69,7 @@
                             <div class="prod-preview">
                                 <div class="prod-preview__list">
                                     <div class="prod-preview__item">
-                                        <img src="${pageContext.request.contextPath}/assets/img/product/item-1.png" alt="" class="prod-preview__img" />
+                                        <img src="${pageContext.request.contextPath}/${pd.imagePath}" alt="" class="prod-preview__img" />
                                     </div>
                                     <div class="prod-preview__item">
                                         <img src="${pageContext.request.contextPath}/assets/img/product/item-2.png" alt="" class="prod-preview__img" />
@@ -83,13 +83,13 @@
                                 </div>
                                 <div class="prod-preview__thumbs">
                                     <img
-                                        src="${pageContext.request.contextPath}/assets/img/product/item-1.png"
+                                        src="${pageContext.request.contextPath}/${pd.imagePath}"
                                         alt=""
                                         class="prod-preview__thumb-img prod-preview__thumb-img--current"
                                         />
-                                    <img src="${pageContext.request.contextPath}/assets/img/product/item-2.png" alt="" class="prod-preview__thumb-img" />
-                                    <img src="${pageContext.request.contextPath}/assets/img/product/item-3.png" alt="" class="prod-preview__thumb-img" />
-                                    <img src="${pageContext.request.contextPath}/assets/img/product/item-4.png" alt="" class="prod-preview__thumb-img" />
+                                    <img src="${pageContext.request.contextPath}/${pd.imagePath}" alt="" class="prod-preview__thumb-img" />
+                                    <img src="${pageContext.request.contextPath}/${pd.imagePath}" alt="" class="prod-preview__thumb-img" />
+                                    <img src="${pageContext.request.contextPath}/${pd.imagePath}" alt="" class="prod-preview__thumb-img" />
                                 </div>
                             </div>
                         </div>
@@ -137,9 +137,11 @@
                                                     <p class="prod-info__total-price">$${pd.price}</p>
                                                     <div class="prod-info__row">
                                                         <button class="btn btn--primary prod-info__add-to-cart">Add to Cart</button>
+                                                        <c:if test="${user.admin == 1}">
                                                         <a class="like-btn prod-info__like-btn" href="${pageContext.request.contextPath}/EditProductControl?id=${pd.productId}">
                                                             <img src="${pageContext.request.contextPath}/assets/icons/setting.svg" alt="" class="like-btn__icon icon" />
                                                         </a>
+                                                        </c:if>
                                                     </div>
                                                 </div>
                                             </div>
@@ -176,7 +178,7 @@
                                                 Illum dolorem est rem voluptas nam! Voluptatem.
                                             </p>
                                             <p>
-                                                <img src="${pageContext.request.contextPath}/assets/img/product/item-1.png" alt="" />
+                                                <img src="${pageContext.request.contextPath}/${pd.imagePath}" alt="" />
                                                 <em>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</em>
                                             </p>
                                             <blockquote>
@@ -207,7 +209,7 @@
                                                 Illum dolorem est rem voluptas nam! Voluptatem.
                                             </p>
                                             <p>
-                                                <img src="${pageContext.request.contextPath}/assets/img/product/item-1.png" alt="" />
+                                                <img src="${pageContext.request.contextPath}/${pd.imagePath}" alt="" />
                                                 <em>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</em>
                                             </p>
                                             <p>
@@ -235,7 +237,7 @@
                                                 Illum dolorem est rem voluptas nam! Voluptatem.
                                             </p>
                                             <p>
-                                                <img src="${pageContext.request.contextPath}/assets/img/product/item-1.png" alt="" />
+                                                <img src="${pageContext.request.contextPath}/${pd.imagePath}" alt="" />
                                                 <em>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</em>
                                             </p>
                                             <p>
