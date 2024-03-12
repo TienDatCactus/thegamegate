@@ -112,16 +112,6 @@ ol,
 ul {
     list-style: none;
 }
-.paging{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn>a {
-    color: var(--text-color);
-    font-size: 1.4rem;
-}
 
 blockquote,
 q {
