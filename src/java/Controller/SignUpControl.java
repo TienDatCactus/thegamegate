@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(name = "SignUpControl", urlPatterns = {"/SignUpControl"})
 public class SignUpControl extends HttpServlet {
@@ -26,18 +28,24 @@ public class SignUpControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        SignUpDAO signUp = new SignUpDAO();
+        UserDAO dao = new UserDAO();
+        List<Users> user = dao.getUserList();
+        int id = user.size() + 1;
+
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
-        int telephone = Integer.parseInt(request.getParameter("telephone"));
+        String telephone = (request.getParameter("telephone"));
         String address = request.getParameter("address");
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
-        SignUpDAO signUp = new SignUpDAO();
-        boolean success = signUp.checkSignUpAccount(email, password);
+        boolean success = signUp.addUser(id, firstName, lastName, telephone, address);
 
+        PrintWriter out = response.getWriter();
+        out.print(success);
         if (success) {
+            signUp.checkSignUpAccount(id, email, password);
             response.sendRedirect(request.getContextPath() + "/LoginControl");
         } else {
             response.sendRedirect(request.getContextPath() + "/SignUpControl");

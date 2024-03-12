@@ -34,8 +34,12 @@ public class LoginControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int admin = 0;
         try {
             String email = request.getParameter("email");
+            if (email.contains("admin")) {
+                admin = 1;
+            }
             String password = request.getParameter("password");
             LoginDAO login = new LoginDAO();
             UsersAccount usa = login.checkLogin(email, password);
