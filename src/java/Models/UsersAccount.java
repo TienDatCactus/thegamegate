@@ -13,11 +13,21 @@ public class UsersAccount {
     int userId;
     String email;
     String password;
+    int admin;
 
-    public UsersAccount(int userId,String email, String password) {
+    public int getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(int admin) {
+        this.admin = admin;
+    }
+
+    public UsersAccount(int userId, String email, String password, int admin) {
         this.userId = userId;
         this.email = email;
         this.password = password;
+        this.admin = admin;
     }
 
     public int getUserId() {
