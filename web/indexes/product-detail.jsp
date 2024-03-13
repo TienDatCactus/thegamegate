@@ -136,7 +136,6 @@
                                                     </div>
                                                     <p class="prod-info__total-price">$${pd.price}</p>
                                                     <div class="prod-info__row">
-                                                        <c:if test="${user.admin == 0}">
                                                         <button class="btn btn--primary prod-info__add-to-cart">Add to Cart</button>
                                                         <c:if test="${user.admin == 1}">
                                                         <a class="like-btn prod-info__like-btn" href="${pageContext.request.contextPath}/EditProductControl?id=${pd.productId}">
