@@ -1,10 +1,10 @@
-# GameHub 🎮
+# theGameGate 🎮
 
-Welcome to GameHub, your ultimate destination for buying and selling games online! With GameHub, you can browse through a wide selection of games, manage your profile, and interact with other gamers in a seamless and intuitive platform.
+Welcome to theGameGate, your ultimate destination for buying and selling games online! With theGameGate, you can browse through a wide selection of games, manage your profile, and interact with other gamers in a seamless and intuitive platform.
 
 ## Introduction
 
-GameHub is a web application built using Java, JSTL, HTML, CSS, and JavaScript. It provides a user-friendly interface for buying and selling games, as well as managing user profiles and game listings.
+theGameGate is a web application built using Java, JSTL, HTML, CSS, and JavaScript. It provides a user-friendly interface for buying and selling games, as well as managing user profiles and game listings.
 
 ## Features
 
@@ -17,10 +17,10 @@ GameHub is a web application built using Java, JSTL, HTML, CSS, and JavaScript. 
 
 ## Installation
 
-To run GameHub locally on your machine, follow these steps:
+To run theGameGate locally on your machine, follow these steps:
 
 1. Clone the repository:
-`git clone https://github.com/yourusername/gamehub.git`
+`git clone https://github.com/yourusername/theGameGate.git`
 
 2. Set up your development environment with Java, JSTL, and a web server such as Apache Tomcat.
 3. Deploy the application to your web server.
@@ -29,7 +29,7 @@ To run GameHub locally on your machine, follow these steps:
 ## Usage
 
 1. **Login or Signup**: Start by logging in to your account or creating a new one if you're a new user.
-2. **Browse Games**: Explore the wide variety of games available for sale on GameHub.
+2. **Browse Games**: Explore the wide variety of games available for sale on theGameGate.
 3. **Manage Profile**: Update your profile information and preferences as needed.
 4. **Sell Games**: If you're a seller, use the CRUD operations to add, edit, or delete game listings.
 5. **Search and Filter**: Use the search and filter options to find specific games based on your preferences.
@@ -37,7 +37,7 @@ To run GameHub locally on your machine, follow these steps:
 
 ## Contributing
 
-Contributions to GameHub are welcome! Whether it's fixing bugs, adding new features, or improving the user experience, we appreciate all contributions from the community. Feel free to submit a pull request with your changes.
+Contributions to theGameGate are welcome! Whether it's fixing bugs, adding new features, or improving the user experience, we appreciate all contributions from the community. Feel free to submit a pull request with your changes.
 
 ## License
 
